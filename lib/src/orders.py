@@ -1,4 +1,5 @@
 import dearpygui.dearpygui as dpg
+from stores_info import stores
 
 class globals:
     WIDTH = 1000
@@ -25,9 +26,9 @@ class Windows:
             with dpg.texture_registry():
                 dpg.add_static_texture(pfp_width,pfp_height,pfp_data,tag="pfp")
 
-            dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
-            dpg.add_same_line()
-            dpg.add_text(f"\nStore Name\n------\nStore Rating")
+            with dpg.group(horizontal=True):
+                dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
+                dpg.add_text(f"\nStore Name\n------\nStore Rating")
             dpg.add_text(f"Name")
       
         dpg.add_spacer(height=1) 
@@ -49,21 +50,34 @@ class Windows:
             y_data = [0,5,10,10,20,25,5,35,40]   
             dpg.add_plot_axis(dpg.mvXAxis)
             dpg.add_plot_axis(dpg.mvYAxis)
+            #dpg.set_axis_limits(dpg.last_item(), 0,50)
             # Add line series to the y axis
             dpg.add_line_series(x_data, y_data, label="Parabola", parent=dpg.last_item())
         dpg.add_spacer(height=15)
-        Help_button = dpg.add_button(label="?")
-        dpg.add_same_line()
-        dpg.add_text("HELP")
-        Settings_button = dpg.add_button(label="*")
-        dpg.add_same_line()
-        dpg.add_text("SETTINGS")
-    
+        with dpg.group(horizontal=True):
+            Help_button = dpg.add_button(label="?")
+            dpg.add_text("HELP")
+        with dpg.group(horizontal=True):
+            Settings_button = dpg.add_button(label="*")
+            dpg.add_text("SETTINGS")
     
     with dpg.window(label="main_window",tag="main_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=True) as main_window:
-        with dpg.child_window(width=500,height=globals.HEIGHT/1.8,show=False) as store_info:
-            pass
-           
+        with dpg.child_window(border=False,height=135,horizontal_scrollbar=True) as store_info_cw:
+            with dpg.theme() as scrollbar_size:
+                with dpg.theme_component(dpg.mvChildWindow):
+                    dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize,10,category=dpg.mvStyleVar_Alpha)
+                
+
+            with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,row_background=True,resizable=True,width=600):
+                for col_name in stores[0].keys():
+                    dpg.add_table_column(label=f"{col_name}",width_fixed=True)
+                for store in stores:
+                    with dpg.table_row():
+                        for value in store.values():
+                            dpg.add_text(f"{value}")
+            dpg.add_text(" " * 80)
+             
+                
 
     with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True) as customer_window:
         dpg.create_context()
@@ -96,7 +110,7 @@ dpg.bind_item_theme(Windows.customer_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.phone_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.checkout_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.profile_background,Windows.Theme.child_window_theme)
-
+dpg.bind_item_theme(Windows.store_info_cw,Windows.scrollbar_size)
 
 dpg.setup_dearpygui()
 dpg.show_viewport()

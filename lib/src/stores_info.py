@@ -1,100 +1,101 @@
 
 
 store1 = {
-    "Store number" : "0213",
+    "Store Number" : "0213",
     "Location" : "Glimmerland Shimmer City",
-    "Store name" : "Walkway plaza",
-    "Store inventory" : "1500", 
-    "Store distant" : "133 miles", 
+    "Store Name" : "Walkway plaza",
+    "Inventory" : "1500", 
+    "Distance" : "133 miles", 
 }
 store2 = {
-    "Store number" : "1352",
+    "Store Number" : "1352",
     "Location" : "Pinevalley Cedarburg",
-    "Store name" : "Park Cental Avenue",
-    "Store inventory" : "1023", 
-    "Store distant" : "456 miles", 
+    "Store Name" : "Park Cental Avenue",
+    "Inventory" : "1023", 
+    "Distance" : "456 miles", 
 }
 store3 = {
-    "Store number" : "3594",
+    "Store Number" : "3594",
     "Location" : "Rockwater Granite Bay",
-    "Store name" : "Stayround plaza",
-    "Store inventory" : "2303", 
-    "Store distant" : "220 miles", 
+    "Store Name" : "Stayround plaza",
+    "Inventory" : "2303", 
+    "Distance" : "220 miles", 
 }
 store4 = {
-    "Store number" : "4892",
+    "Store Number" : "4892",
     "Location" : "Meadowcrest Greenfield",
-    "Store name" : "Sunset Plaza",
-    "Store inventory" : "1200", 
-    "Store distant" : "350 miles", 
+    "Store Name" : "Sunset Plaza",
+    "Inventory" : "1200", 
+    "Distance" : "350 miles", 
 }
 store5 = {
-    "Store number" : "5567",
+    "Store Number" : "5567",
     "Location" : "Suncrest Bay",
-    "Store name" : "Evergreen Plaza",
-    "Store inventory" : "750", 
-    "Store distant" : "12170 miles", 
+    "Store Name" : "Evergreen Plaza",
+    "Inventory" : "750", 
+    "Distance" : "12170 miles", 
 }
 store6 = {
-    "Store number" : "6219",
+    "Store Number" : "6219",
     "Location" : "Sunshire Brightville",
-    "Store name" : "Stayround plaza",
-    "Store inventory" : "1100", 
-    "Store distant" : "1870 miles", 
+    "Store Name" : "Stayround plaza",
+    "Inventory" : "1100", 
+    "Distance" : "1870 miles", 
 }
 store7 = {
-    "Store number" : "7963",
+    "Store Number" : "7963",
     "Location" : "Crestwood Oakridge",
-    "Store name" : "Maplewood Drive",
-    "Store inventory" : "1590", 
-    "Store distant" : "5233 miles", 
+    "Store Name" : "Maplewood Drive",
+    "Inventory" : "1590", 
+    "Distance" : "5233 miles", 
 }
 store8 = {
-    "Store number" : "8008",
+    "Store Number" : "8008",
     "Location" : "Brookhaven Rivertown",
-    "Store name" : "Horizon Lane",
-    "Store inventory" : "2134", 
-    "Store distant" : "40705 miles", 
+    "Store Name" : "Horizon Lane",
+    "Inventory" : "2134", 
+    "Distance" : "40705 miles", 
 }
 store9 = {
-    "Store number" : "9361",
+    "Store Number" : "9361",
     "Location" : "Maplewind Breezeborough",
-    "Store name" : "Serenity Court",
-    "Store inventory" : "1470", 
-    "Store distant" : "8721 miles", 
+    "Store Name" : "Serenity Court",
+    "Inventory" : "1470", 
+    "Distance" : "8721 miles", 
 }
 store10 = {
-    "Store number" : "15100",
+    "Store Number" : "15100",
     "Location" : "Starfield Astral Point",
-    "Store name" : "Golden Grove Road",
-    "Store inventory" : "1230", 
-    "Store distant" : "1002 miles", 
+    "Store Name" : "Golden Grove Road",
+    "Inventory" : "1230", 
+    "Distance" : "1002 miles", 
 }
 store11 = {
-    "Store number" : "1272",
+    "Store Number" : "1272",
     "Location" : "Rockwater Granite Bay",
-    "Store name" : "Crystal Cove Street",
-    "Store inventory" : "903", 
-    "Store distant" : "9965 miles", 
+    "Store Name" : "Crystal Cove Street",
+    "Inventory" : "903", 
+    "Distance" : "9965 miles", 
 }
 store12 = {
-    "Store number" : "1320",
+    "Store Number" : "1320",
     "Location" : "Shadowglen Nightfall City",
-    "Store name" : "Commerce Boulevard",
-    "Store inventory" : "874", 
-    "Store distant" : "1663 miles", 
+    "Store Name" : "Commerce Boulevard",
+    "Inventory" : "874", 
+    "Distance" : "1663 miles", 
 }
 store13 = {
-    "Store number" : "1466",
+    "Store Number" : "1466",
     "Location" : "Lionsville Crater",
-    "Store name" : "Emerald Avenue",
-    "Store inventory" : "790", 
-    "Store distant" : "13420 miles", 
+    "Store Name" : "Emerald Avenue",
+    "Inventory" : "790", 
+    "Distance" : "13420 miles", 
 }
-
 
 stores = [store1,store2,store3,store4,store5,store6,store7,store8,store9,store10,store11,store12,store13]
 
 
 
-
+for store in stores:
+    for values in store.values():
+        print(values)
