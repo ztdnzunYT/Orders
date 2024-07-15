@@ -5,21 +5,21 @@ store1 = {
     "Location" : "Glimmerland Shimmer City",
     "Store Name" : "Walkway plaza",
     "Inventory" : "1500", 
-    "Distance" : "133 miles", 
+    "Distance" : "456 miles", 
 }
 store2 = {
     "Store Number" : "1352",
     "Location" : "Pinevalley Cedarburg",
     "Store Name" : "Park Cental Avenue",
     "Inventory" : "1023", 
-    "Distance" : "456 miles", 
+    "Distance" : "133 miles", 
 }
 store3 = {
     "Store Number" : "3594",
     "Location" : "Rockwater Granite Bay",
     "Store Name" : "Stayround plaza",
     "Inventory" : "2303", 
-    "Distance" : "220 miles", 
+    "Distance" : "2200 miles", 
 }
 store4 = {
     "Store Number" : "4892",
@@ -61,31 +61,31 @@ store9 = {
     "Location" : "Maplewind Breezeborough",
     "Store Name" : "Serenity Court",
     "Inventory" : "1470", 
-    "Distance" : "8721 miles", 
+    "Distance" : "872 miles", 
 }
 store10 = {
-    "Store Number" : "15100",
+    "Store Number" : "1010",
     "Location" : "Starfield Astral Point",
     "Store Name" : "Golden Grove Road",
     "Inventory" : "1230", 
     "Distance" : "1002 miles", 
 }
 store11 = {
-    "Store Number" : "1272",
+    "Store Number" : "1172",
     "Location" : "Rockwater Granite Bay",
     "Store Name" : "Crystal Cove Street",
     "Inventory" : "903", 
     "Distance" : "9965 miles", 
 }
 store12 = {
-    "Store Number" : "1320",
+    "Store Number" : "1220",
     "Location" : "Shadowglen Nightfall City",
     "Store Name" : "Commerce Boulevard",
     "Inventory" : "874", 
-    "Distance" : "1663 miles", 
+    "Distance" : "679 miles", 
 }
 store13 = {
-    "Store Number" : "1466",
+    "Store Number" : "1366",
     "Location" : "Lionsville Crater",
     "Store Name" : "Emerald Avenue",
     "Inventory" : "790", 
@@ -94,8 +94,3 @@ store13 = {
 
 stores = [store1,store2,store3,store4,store5,store6,store7,store8,store9,store10,store11,store12,store13]
 
-
-
-for store in stores:
-    for values in store.values():
-        print(values)

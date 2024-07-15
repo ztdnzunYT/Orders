@@ -60,14 +60,13 @@ class Windows:
         with dpg.group(horizontal=True):
             Settings_button = dpg.add_button(label="*")
             dpg.add_text("SETTINGS")
-    
+
     with dpg.window(label="main_window",tag="main_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=True) as main_window:
         with dpg.child_window(border=False,height=135,horizontal_scrollbar=True) as store_info_cw:
             with dpg.theme() as scrollbar_size:
                 with dpg.theme_component(dpg.mvChildWindow):
                     dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize,10,category=dpg.mvStyleVar_Alpha)
                 
-
             with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,row_background=True,resizable=True,width=600):
                 for col_name in stores[0].keys():
                     dpg.add_table_column(label=f"{col_name}",width_fixed=True)
@@ -76,8 +75,17 @@ class Windows:
                         for value in store.values():
                             dpg.add_text(f"{value}")
             dpg.add_text(" " * 80)
-             
+
+        with dpg.child_window():
+            with dpg.plot(label="District orders",width=450,height=160):
+                dpg.add_plot_axis(axis=dpg.mvXAxis)
+                dpg.add_plot_axis(axis=dpg.mvYAxis,label="Orders")
                 
+
+        with dpg.group(horizontal=True,horizontal_spacing=50):
+            dpg.add_text(f"Most Ordered : Park Cental Avenue")
+            dpg.add_text(f"Total Orders: ",wrap=200)
+
 
     with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True) as customer_window:
         dpg.create_context()
