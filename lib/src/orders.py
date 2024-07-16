@@ -12,7 +12,8 @@ class Windows:
     with dpg.window(label="background_window", tag="background_window") as background_window:
         dpg.create_context()
         
-    with dpg.window(label="side_menu",tag="side_menu",pos=(10,10),width=200,height=globals.HEIGHT-60,no_resize=True,no_title_bar=True,no_move=True,indent=1) as side_menu:
+    with dpg.window(label="side_menu",tag="side_menu",pos=(10,10),width=200,height=globals.HEIGHT-60,no_resize=True,
+        no_title_bar=True,no_move=True,indent=1) as side_menu_window:
         dpg.create_context()
        
         Orders_title = dpg.add_button(label="ORDERS",width=dpg.get_item_width("side_menu")-15)
@@ -30,11 +31,20 @@ class Windows:
                 dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
                 dpg.add_text(f"\nStore Name\n------\nStore Rating")
             dpg.add_text(f"Name")
-      
+
+        class Window_manager: 
+            def window_management(sender,app_data):
+                for window in Windows.main_menu_windows:
+                    dpg.hide_item(window)
+                    
+                print(sender)
+                
+                
+         
         dpg.add_spacer(height=1) 
-        Store_info = dpg.add_button(label="Store Info")
+        Store_info_button = dpg.add_button(label="Store Info",tag="Store_info_button",callback=Window_manager.window_management)
         dpg.add_spacer(height=1)
-        Inventory_button = dpg.add_button(label="Store Inventory")
+        Inventory_button = dpg.add_button(label="Store Inventory",tag="Inventory_button",callback=Window_manager.window_management)
         dpg.add_spacer(height=1)
         Incoming_orders_button = dpg.add_button(label="Incoming Orders")
         dpg.add_spacer(height=1)
@@ -61,13 +71,15 @@ class Windows:
             Settings_button = dpg.add_button(label="*")
             dpg.add_text("SETTINGS")
 
-    with dpg.window(label="main_window",tag="main_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=True) as main_window:
+    with dpg.window(label="store_info_window",tag="store_info_window", pos=(225,10),width=500,
+        height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as store_info_window:
         with dpg.child_window(border=False,height=135,horizontal_scrollbar=True) as store_info_cw:
             with dpg.theme() as scrollbar_size:
                 with dpg.theme_component(dpg.mvChildWindow):
                     dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize,10,category=dpg.mvStyleVar_Alpha)
                 
-            with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,row_background=True,resizable=True,width=600):
+            with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
+                row_background=True,resizable=True,width=600):
                 for col_name in stores[0].keys():
                     dpg.add_table_column(label=f"{col_name}",width_fixed=True)
                 for store in stores:
@@ -80,21 +92,28 @@ class Windows:
             with dpg.plot(label="District orders",width=450,height=160):
                 dpg.add_plot_axis(axis=dpg.mvXAxis)
                 dpg.add_plot_axis(axis=dpg.mvYAxis,label="Orders")
-                
-
+        
         with dpg.group(horizontal=True,horizontal_spacing=50):
-            dpg.add_text(f"Most Ordered : Park Cental Avenue")
+            dpg.add_text(f"Most Ordered : ")
             dpg.add_text(f"Total Orders: ",wrap=200)
 
-
-    with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True) as customer_window:
+    with dpg.window(label="main_window",tag="main_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,
+        no_title_bar=True,no_resize=True, show=True) as store_inventory_window:
+        dpg.add_combo(["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],default_value="Shoes")
+        
+    with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
+        no_move=True,no_title_bar=True,no_resize=True) as customer_window:
         dpg.create_context()
 
-    with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,no_move=True,no_title_bar=True,no_resize=True) as phone_window:
+    with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,
+        no_move=True,no_title_bar=True,no_resize=True) as phone_window:
         dpg.create_context()
 
-    with dpg.window(label="checkout_window",tag="checkout_window", pos=(225,355),width=750,height=globals.HEIGHT/3.07,no_close=True,no_move=True,no_title_bar=True,no_resize=True) as checkout_window:
+    with dpg.window(label="checkout_window",tag="checkout_window", pos=(225,355),width=750,height=globals.HEIGHT/3.07,no_close=True,
+        no_move=True,no_title_bar=True,no_resize=True) as checkout_window:
         dpg.create_context()
+
+    main_menu_windows = (store_info_window,store_inventory_window)
 
     class Theme:
         with dpg.theme() as background_theme:
@@ -111,14 +130,20 @@ class Windows:
                 
     
 
+
+
+
+
+
 dpg.bind_item_theme(Windows.background_window,Windows.Theme.background_theme)
-dpg.bind_item_theme(Windows.side_menu,Windows.Theme.window_theme)
-dpg.bind_item_theme(Windows.main_window,Windows.Theme.window_theme)
+dpg.bind_item_theme(Windows.side_menu_window,Windows.Theme.window_theme)
+dpg.bind_item_theme(Windows.store_info_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.customer_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.phone_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.checkout_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.profile_background,Windows.Theme.child_window_theme)
 dpg.bind_item_theme(Windows.store_info_cw,Windows.scrollbar_size)
+dpg.bind_item_theme(Windows.store_inventory_window,Windows.Theme.window_theme)
 
 dpg.setup_dearpygui()
 dpg.show_viewport()
