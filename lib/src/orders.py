@@ -33,24 +33,21 @@ class Windows:
             dpg.add_text(f"Name")
 
         class Window_manager: 
-            def window_management(sender,app_data):
+            def window_management(sender,app_data,user_data):
                 for window in Windows.main_menu_windows:
                     dpg.hide_item(window)
+                dpg.show_item(user_data)
                     
-                print(sender)
-                
-                
-         
         dpg.add_spacer(height=1) 
-        Store_info_button = dpg.add_button(label="Store Info",tag="Store_info_button",callback=Window_manager.window_management)
+        store_info_button = dpg.add_button(label="Store Info",tag="store_info_button",callback=Window_manager.window_management,user_data="store_info_window")
         dpg.add_spacer(height=1)
-        Inventory_button = dpg.add_button(label="Store Inventory",tag="Inventory_button",callback=Window_manager.window_management)
+        inventory_button = dpg.add_button(label="Store Inventory",tag="inventory_button",callback=Window_manager.window_management,user_data="store_inventory_window")
         dpg.add_spacer(height=1)
-        Incoming_orders_button = dpg.add_button(label="Incoming Orders")
+        incoming_orders_button = dpg.add_button(label="Incoming Orders",tag="incoming_orders_button",callback=Window_manager.window_management,user_data="incoming_orders_window")
         dpg.add_spacer(height=1)
-        Recieve_shipment_button = dpg.add_button(label="Recieve Shipment")
+        recieve_shipment_button = dpg.add_button(label="Recieve Shipment",tag="recieve_shipment_button",callback=Window_manager.window_management,user_data="recieve_shipment_window")
         dpg.add_spacer(height=1)
-        Sales_analytics_button = dpg.add_button(label="Sales Analytics")
+        sales_analytics_button = dpg.add_button(label="Sales Analytics",tag="sales_analytics_button",callback=Window_manager.window_management,user_data="sales_analytics_window")
         dpg.add_spacer(height=1)
         dpg.add_text(f"Sales: ---- ")
         dpg.add_text(f"Revenue: $----")
@@ -72,8 +69,8 @@ class Windows:
             dpg.add_text("SETTINGS")
 
     with dpg.window(label="store_info_window",tag="store_info_window", pos=(225,10),width=500,
-        height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as store_info_window:
-        with dpg.child_window(border=False,height=135,horizontal_scrollbar=True) as store_info_cw:
+        height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=True) as store_info_window:
+        with dpg.child_window(border=False,height=150,horizontal_scrollbar=True) as store_info_cw:
             with dpg.theme() as scrollbar_size:
                 with dpg.theme_component(dpg.mvChildWindow):
                     dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize,10,category=dpg.mvStyleVar_Alpha)
@@ -86,7 +83,6 @@ class Windows:
                     with dpg.table_row():
                         for value in store.values():
                             dpg.add_text(f"{value}")
-            dpg.add_text(" " * 80)
 
         with dpg.child_window():
             with dpg.plot(label="District orders",width=450,height=160):
@@ -97,13 +93,42 @@ class Windows:
             dpg.add_text(f"Most Ordered : ")
             dpg.add_text(f"Total Orders: ",wrap=200)
 
-    with dpg.window(label="main_window",tag="main_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,
-        no_title_bar=True,no_resize=True, show=True) as store_inventory_window:
-        dpg.add_combo(["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],default_value="Shoes")
+    def test(sender,app_data,user_data):
+        print(f"{app_data}")
         
+    with dpg.window(label="store_inventory_window",tag="store_inventory_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,
+        no_title_bar=True,no_resize=True, show=False) as store_inventory_window:
+        dpg.add_combo(items=["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],tag="category_list",default_value="Shoes",callback=test)
+        with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
+            row_background=True,resizable=True):
+            dpg.add_table_column()
+        
+    with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
+        height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
+        dpg.create_context()
+        dpg.add_text("incoming orders")
+
+    with dpg.window(label="recieve_shipment_window",tag="recieve_shipment_window", pos=(225,10),width=500,
+        height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as recieve_shipment_window:
+        dpg.create_context()
+        dpg.add_text("recieve shipment")
+    
+    with dpg.window(label="sales_analytics_window",tag="sales_analytics_window", pos=(225,10),width=500,
+        height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as sales_analytics_window:
+        dpg.create_context()
+        dpg.add_text("sales analytics")
+
+
+    
+    #may be able to do a login window
+
+
+
+
     with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
         no_move=True,no_title_bar=True,no_resize=True) as customer_window:
         dpg.create_context()
+        
 
     with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,
         no_move=True,no_title_bar=True,no_resize=True) as phone_window:
@@ -113,7 +138,8 @@ class Windows:
         no_move=True,no_title_bar=True,no_resize=True) as checkout_window:
         dpg.create_context()
 
-    main_menu_windows = (store_info_window,store_inventory_window)
+    menu_bg_windows = (side_menu_window,)
+    main_menu_windows = (store_info_window,store_inventory_window,incoming_orders_window,recieve_shipment_window,sales_analytics_window)
 
     class Theme:
         with dpg.theme() as background_theme:
@@ -130,11 +156,6 @@ class Windows:
                 
     
 
-
-
-
-
-
 dpg.bind_item_theme(Windows.background_window,Windows.Theme.background_theme)
 dpg.bind_item_theme(Windows.side_menu_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.store_info_window,Windows.Theme.window_theme)
@@ -143,7 +164,10 @@ dpg.bind_item_theme(Windows.phone_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.checkout_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.profile_background,Windows.Theme.child_window_theme)
 dpg.bind_item_theme(Windows.store_info_cw,Windows.scrollbar_size)
-dpg.bind_item_theme(Windows.store_inventory_window,Windows.Theme.window_theme)
+for window in Windows.main_menu_windows:
+    dpg.bind_item_theme(window,Windows.Theme.window_theme)
+
+
 
 dpg.setup_dearpygui()
 dpg.show_viewport()
