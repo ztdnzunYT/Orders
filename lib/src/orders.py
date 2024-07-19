@@ -1,5 +1,6 @@
 import dearpygui.dearpygui as dpg
 from stores_info import stores
+from store_inventory import shoes
 
 class globals:
     WIDTH = 1000
@@ -29,7 +30,7 @@ class Windows:
 
             with dpg.group(horizontal=True):
                 dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
-                dpg.add_text(f"\nStore Name\n------\nStore Rating")
+                dpg.add_text(f"\nHub Name\n------\nHub Rating")
             dpg.add_text(f"Name")
 
         class Window_manager: 
@@ -89,7 +90,7 @@ class Windows:
                 dpg.add_plot_axis(axis=dpg.mvXAxis)
                 dpg.add_plot_axis(axis=dpg.mvYAxis,label="Orders")
         
-        with dpg.group(horizontal=True,horizontal_spacing=50):
+        with dpg.group(horizontal=True,horizontal_spacing=50): 
             dpg.add_text(f"Most Ordered : ")
             dpg.add_text(f"Total Orders: ",wrap=200)
 
@@ -99,10 +100,21 @@ class Windows:
     with dpg.window(label="store_inventory_window",tag="store_inventory_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,
         no_title_bar=True,no_resize=True, show=False) as store_inventory_window:
         dpg.add_combo(items=["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],tag="category_list",default_value="Shoes",callback=test)
+        dpg.add_spacer(height=3)
         with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
             row_background=True,resizable=True):
-            dpg.add_table_column()
-        
+            for col_name in shoes[0]:
+                dpg.add_table_column(label=f"{col_name}") 
+            for shoe in shoes:
+                with dpg.table_row():
+                    for category in shoes[0]:
+                        print(shoe[category])
+                        if isinstance(shoe[category],float):
+                            dpg.add_selectable(label=f"${shoe[category]:.2f}",span_columns=True,height=100)
+                        else:
+                            dpg.add_text(f"{shoe[category]}",wrap=100)
+                   
+            
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
         dpg.create_context()
@@ -118,11 +130,8 @@ class Windows:
         dpg.create_context()
         dpg.add_text("sales analytics")
 
-
     
     #may be able to do a login window
-
-
 
 
     with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
@@ -154,9 +163,9 @@ class Windows:
             with dpg.theme_component(dpg.mvChildWindow):
                 dpg.add_theme_color(dpg.mvThemeCol_ChildBg, (15, 15, 15),category=dpg.mvThemeCat_Core)
                 
-    
 
 dpg.bind_item_theme(Windows.background_window,Windows.Theme.background_theme)
+
 dpg.bind_item_theme(Windows.side_menu_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.store_info_window,Windows.Theme.window_theme)
 dpg.bind_item_theme(Windows.customer_window,Windows.Theme.window_theme)

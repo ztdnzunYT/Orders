@@ -1,22 +1,31 @@
 import dearpygui.dearpygui as dpg
 
-# Initialize Dear PyGui context
 dpg.create_context()
 
-# Callback to print the selected combo value
-def combo_callback(sender, app_data, user_data):
-    print(f"Selected value: {app_data}")
+with dpg.theme() as table_theme:
+    with dpg.theme_component(dpg.mvTable):
+        # dpg.add_theme_color(dpg.mvThemeCol_HeaderHovered, (255, 0, 0, 100), category=dpg.mvThemeCat_Core)
+        dpg.add_theme_color(dpg.mvThemeCol_HeaderActive, (0, 0, 0, 0), category=dpg.mvThemeCat_Core)
+        dpg.add_theme_color(dpg.mvThemeCol_Header, (0, 0, 0, 0), category=dpg.mvThemeCat_Core)
 
-# Create the main window
-with dpg.window(label="Combo Example", width=400, height=300):
-    # Create a combo box
-    dpg.add_combo(label="Select an option", items=["Option 1", "Option 2", "Option 3"], callback=combo_callback)
+def clb_selectable(sender, app_data, user_data):
+    print(f"Row {user_data}")
 
-# Show the viewport
-dpg.create_viewport(title='Combo Example', width=400, height=300)
+with dpg.window(tag="Selectable Tables"):
+    with dpg.table(tag="SelectRows", header_row=True) as selectablerows:
+        dpg.add_table_column(label="First")
+        dpg.add_table_column(label="Second")
+        dpg.add_table_column(label="Third")
+
+        for i in range(15):
+            with dpg.table_row():
+                for j in range(3):
+                    dpg.add_selectable(label=f"Row{i} Column{j}", span_columns=True, callback=clb_selectable, user_data=i)
+   
+
+
+dpg.create_viewport(width=800, height=600)
 dpg.setup_dearpygui()
 dpg.show_viewport()
-
-# Start the Dear PyGui event loop
 dpg.start_dearpygui()
 dpg.destroy_context()
