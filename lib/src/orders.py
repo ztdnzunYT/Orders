@@ -77,13 +77,13 @@ class Windows:
                     dpg.add_theme_style(dpg.mvStyleVar_ScrollbarSize,10,category=dpg.mvStyleVar_Alpha)
                 
             with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
-                row_background=True,resizable=True,width=600):
+                row_background=True,resizable=False):
                 for col_name in stores[0].keys():
                     dpg.add_table_column(label=f"{col_name}",width_fixed=True)
                 for store in stores:
                     with dpg.table_row():
                         for value in store.values():
-                            dpg.add_text(f"{value}")
+                            dpg.add_text(f"{value}",wrap=90)
 
         with dpg.child_window():
             with dpg.plot(label="District orders",width=450,height=160):
@@ -95,26 +95,31 @@ class Windows:
             dpg.add_text(f"Total Orders: ",wrap=200)
 
     def test(sender,app_data,user_data):
-        print(f"{app_data}")
+        print(f"{user_data}")
+        pass
+        #for use in user_data.values():
+            #print(use)
         
     with dpg.window(label="store_inventory_window",tag="store_inventory_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,
         no_title_bar=True,no_resize=True, show=False) as store_inventory_window:
         dpg.add_combo(items=["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],tag="category_list",default_value="Shoes",callback=test)
         dpg.add_spacer(height=3)
         with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
-            row_background=True,resizable=True):
+            row_background=False,resizable=False):
             for col_name in shoes[0]:
-                dpg.add_table_column(label=f"{col_name}") 
+                dpg.add_table_column(label=f"{col_name}",width_fixed=True) 
+          
             for shoe in shoes:
                 with dpg.table_row():
                     for category in shoes[0]:
-                        print(shoe[category])
-                        if isinstance(shoe[category],float):
-                            dpg.add_selectable(label=f"${shoe[category]:.2f}",span_columns=True,height=100)
+                        if category == "Description":
+                            dpg.add_text(f"{shoe[category]}",wrap=170)
+                        elif category == "Price":
+                            dpg.add_text(f"${shoe[category]:.2f}")
                         else:
-                            dpg.add_text(f"{shoe[category]}",wrap=100)
+                            dpg.add_selectable(label=shoe[category],callback=test,span_columns=True,height=45,user_data=shoe)
+              
                    
-            
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
         dpg.create_context()

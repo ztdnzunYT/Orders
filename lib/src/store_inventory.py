@@ -2,37 +2,7 @@
 # ("Dnzuns","Jmuns","Rozz","Dj2Fyes","Swipes","Topias",)
 
 shoes = [
-    #Dnzun
-
-    {
-    "Shoe Name" : "Lil World 14s",
-    "Description" : "Green Suede globe themed throwback low-top shoe",
-    "Brand" : "Dnzuns",
-    "Price" : 200.00},
-
-    {
-    "Shoe Name" : "Rudeboy Highflys",
-    "Description" : "Third edition red high fly on court high-top basketball shoe",
-    "Brand" : "Dnzuns",
-    "Price" : 180.99},
-
-    {
-    "Shoe Name" : "Cream Mocha Dnzuns",
-    "Description" : "First gen edition coffe tan colored throwback low-top shoe",
-    "Brand" : "Dnzuns",
-    "Price" : 169.99},
-
-    {
-    "Shoe Name" : "Vanta Blacks Dnzuns",
-    "Description" : "First gen edition throwback high-top shoe",
-    "Brand" : "Dnzuns",
-    "Price" : 210.00},
-
-    {
-    "Shoe Name" : "New Jam Dnzuns",
-    "Description" : "First gen edition royal purple suede throwback low-top shoe",
-    "Brand" : "Dnzuns",
-    "Price" : 169.99},
+    
 
     #Jmun
 
@@ -66,6 +36,39 @@ shoes = [
     "Brand" : "Jmuns",
     "Price" : 200.00},
 
+
+    #Dnzun
+
+        {
+        "Shoe Name" : "Lil World 14s",
+        "Description" : "Green Suede globe themed throwback low-top shoe",
+        "Brand" : "Dnzuns",
+        "Price" : 200.00},
+
+        {
+        "Shoe Name" : "Rudeboy Highflys",
+        "Description" : "Third edition red high fly on court high-top basketball shoe",
+        "Brand" : "Dnzuns",
+        "Price" : 180.99},
+
+        {
+        "Shoe Name" : "Cream Mocha Dnzuns",
+        "Description" : "First gen edition coffee tan colored throwback low-top shoe",
+        "Brand" : "Dnzuns",
+        "Price" : 169.99},
+
+        {
+        "Shoe Name" : "Vanta Blacks Dnzuns",
+        "Description" : "First gen edition throwback high-top shoe",
+        "Brand" : "Dnzuns",
+        "Price" : 210.00},
+
+        {
+        "Shoe Name" : "New Jam Dnzuns",
+        "Description" : "First gen edition royal purple suede throwback low-top shoe",
+        "Brand" : "Dnzuns",
+        "Price" : 169.99},
+
     #Rozz
 
     {
@@ -75,7 +78,7 @@ shoes = [
     "Price" : 170.00},
 
     {
-    "Shoe Name" : "Panda p2s",
+    "Shoe Name" : "Panda P2s",
     "Description" : "Low-top white and black themed shoe",
     "Brand" : "Rozz",
     "Price" : 135.99},
@@ -91,7 +94,7 @@ shoes = [
     "Price" : 210.00},
 
     {
-    "Shoe Name" : "Brown Bluey first gen",
+    "Shoe Name" : "Brown Bluey First Gen",
     "Description" : "Brown and black colored high-top shoe ",
     "Brand" : "Rozz",
     "Price" : 200.00},
@@ -110,12 +113,12 @@ shoes = [
     "Brand" : "Dj2fyes",
     "Price" : 120.99},
     {
-    "Shoe Name" : "Sonny Day djs",
+    "Shoe Name" : "Sonny Day Djs",
     "Description" : "Yellow mid-top shoe",
     "Brand" : "Dj2fyes",
     "Price" : 150.00},
     {
-    "Shoe Name" : "Fye Manager slides",
+    "Shoe Name" : "Fye Manager Slides",
     "Description" : "Old school slip in slides",
     "Brand" : "Dj2fyes",
     "Price" : 35.95},
@@ -165,7 +168,7 @@ shoes = [
     "Price" : 150.00},
 
     {
-    "Shoe Name" : "Seline skys",
+    "Shoe Name" : "Seline Skys",
     "Description" : "White and blue low-top shoe",
     "Brand" : "Topias",
     "Price" : 120.99},
@@ -175,7 +178,7 @@ shoes = [
     "Brand" : "Topias",
     "Price" : 130.00},
     {
-    "Shoe Name" : "Wade N wash",
+    "Shoe Name" : "Wade N Wash",
     "Description" : "Dark blue colored high-top basketball shoe",
     "Brand" : "Topias",
     "Price" : 165.95},
@@ -377,12 +380,3 @@ shirts = [
 ]
 
 
-for shoe in shoes:
-    for category in shoes[0]:
-
-        print(category)
-        print(shoe[category])
-
-    print()
-
-    
