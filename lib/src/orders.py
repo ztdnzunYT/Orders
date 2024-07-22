@@ -1,6 +1,6 @@
 import dearpygui.dearpygui as dpg
 from stores_info import stores
-from store_inventory import shoes
+from store_inventory import shoes,shirts
 
 class globals:
     WIDTH = 1000
@@ -16,7 +16,7 @@ class Windows:
     with dpg.window(label="side_menu",tag="side_menu",pos=(10,10),width=200,height=globals.HEIGHT-60,no_resize=True,
         no_title_bar=True,no_move=True,indent=1) as side_menu_window:
         dpg.create_context()
-       
+
         Orders_title = dpg.add_button(label="ORDERS",width=dpg.get_item_width("side_menu")-15)
         dpg.add_spacer(height=1)
         #dpg.add_spacer(height=100)
@@ -34,21 +34,33 @@ class Windows:
             dpg.add_text(f"Name")
 
         class Window_manager: 
-            def window_management(sender,app_data,user_data):
+            def window_manager(sender,app_data,user_data):
                 for window in Windows.main_menu_windows:
                     dpg.hide_item(window)
+               
                 dpg.show_item(user_data)
-                    
+            
+            def store_inventory_table_manager(sender,app_data,user_data):
+                for window in Windows.store_inventory_tables:
+                    dpg.hide_item(window)
+                #dpg.show_item(str(app_data.lower()+"_table"))
+                dpg.show_item(app_data.lower()+"_table")
+                print(dpg.get_item_children(app_data.lower()+"_table"))
+                dpg.set_item_children()
+        
+    
+                
+                
         dpg.add_spacer(height=1) 
-        store_info_button = dpg.add_button(label="Store Info",tag="store_info_button",callback=Window_manager.window_management,user_data="store_info_window")
+        store_info_button = dpg.add_button(label="Store Info",tag="store_info_button",callback=Window_manager.window_manager,user_data="store_info_window")
         dpg.add_spacer(height=1)
-        inventory_button = dpg.add_button(label="Store Inventory",tag="inventory_button",callback=Window_manager.window_management,user_data="store_inventory_window")
+        inventory_button = dpg.add_button(label="Store Inventory",tag="inventory_button",callback=Window_manager.window_manager,user_data="store_inventory_window")
         dpg.add_spacer(height=1)
-        incoming_orders_button = dpg.add_button(label="Incoming Orders",tag="incoming_orders_button",callback=Window_manager.window_management,user_data="incoming_orders_window")
+        incoming_orders_button = dpg.add_button(label="Incoming Orders",tag="incoming_orders_button",callback=Window_manager.window_manager,user_data="incoming_orders_window")
         dpg.add_spacer(height=1)
-        recieve_shipment_button = dpg.add_button(label="Recieve Shipment",tag="recieve_shipment_button",callback=Window_manager.window_management,user_data="recieve_shipment_window")
+        recieve_shipment_button = dpg.add_button(label="Recieve Shipment",tag="recieve_shipment_button",callback=Window_manager.window_manager,user_data="recieve_shipment_window")
         dpg.add_spacer(height=1)
-        sales_analytics_button = dpg.add_button(label="Sales Analytics",tag="sales_analytics_button",callback=Window_manager.window_management,user_data="sales_analytics_window")
+        sales_analytics_button = dpg.add_button(label="Sales Analytics",tag="sales_analytics_button",callback=Window_manager.window_manager,user_data="sales_analytics_window")
         dpg.add_spacer(height=1)
         dpg.add_text(f"Sales: ---- ")
         dpg.add_text(f"Revenue: $----")
@@ -94,21 +106,20 @@ class Windows:
             dpg.add_text(f"Most Ordered : ")
             dpg.add_text(f"Total Orders: ",wrap=200)
 
-    def test(sender,app_data,user_data):
-        print(f"{user_data}")
-        pass
-        #for use in user_data.values():
-            #print(use)
-        
-    with dpg.window(label="store_inventory_window",tag="store_inventory_window", pos=(225,10),width=500,height=globals.HEIGHT/1.8,no_close=True,no_move=True,
+    def category_info(sender,app_data,user_data):
+        print(f"{app_data}")
+   
+    with dpg.window(label="store_inventory_window",tag="store_inventory_window", pos=(225,10),width=500,
+        height=globals.HEIGHT/1.8,no_close=True,no_move=True,
         no_title_bar=True,no_resize=True, show=False) as store_inventory_window:
-        dpg.add_combo(items=["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],tag="category_list",default_value="Shoes",callback=test)
+        dpg.add_combo(items=["Shoes","Shirts","Pants/Shorts","Accessories","Clearance"],tag="category_list",
+            default_value="Shoes",callback=Window_manager.store_inventory_table_manager)
         dpg.add_spacer(height=3)
-        with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
-            row_background=False,resizable=False):
+
+        with dpg.table(tag="shoes_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
+            row_background=False,resizable=False,show=True) as shoes_table:
             for col_name in shoes[0]:
                 dpg.add_table_column(label=f"{col_name}",width_fixed=True) 
-          
             for shoe in shoes:
                 with dpg.table_row():
                     for category in shoes[0]:
@@ -117,7 +128,26 @@ class Windows:
                         elif category == "Price":
                             dpg.add_text(f"${shoe[category]:.2f}")
                         else:
-                            dpg.add_selectable(label=shoe[category],callback=test,span_columns=True,height=45,user_data=shoe)
+                            dpg.add_selectable(label=shoe[category],callback=category_info,span_columns=True,height=45,user_data=shoe)
+        
+
+
+
+        with dpg.table(tag="shirts_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
+            row_background=False,resizable=False,show=False) as shirts_table:
+            for col_name in shirts[0]:
+                dpg.add_table_column(label=f"{col_name}",width_fixed=True) 
+            for shirt in shirts:
+                with dpg.table_row():
+                    for category in shirts[0]:
+                        if category == "Shirt Name":
+                            dpg.add_text(f"{shirt[category]}",wrap=200)
+                        elif category == "Price":
+                            dpg.add_text(f"${shirt[category]:.2f}")
+                        else:
+                            dpg.add_selectable(label=shirt[category],callback=category_info,span_columns=True,height=45,user_data=shirt)
+    
+    
               
                    
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
@@ -152,8 +182,9 @@ class Windows:
         no_move=True,no_title_bar=True,no_resize=True) as checkout_window:
         dpg.create_context()
 
-    menu_bg_windows = (side_menu_window,)
+    menu_bg_windows = (side_menu_window,store_info_window)
     main_menu_windows = (store_info_window,store_inventory_window,incoming_orders_window,recieve_shipment_window,sales_analytics_window)
+    store_inventory_tables = [shoes_table,shirts_table]
 
     class Theme:
         with dpg.theme() as background_theme:
