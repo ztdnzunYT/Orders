@@ -380,3 +380,220 @@ shirts = [
 
 ]
 
+pants_shorts = [
+
+
+    #Dnzun
+
+    {
+    "Pants/Shorts Name" : "Fleece Joggers",
+    "Description" : "Black Joggers",
+    "Brand" : "Dnzuns",
+    "Price" : 45.50},
+
+    {
+    "Pants/Shorts Name" : "Cargo Shorts",
+    "Description" : "Tan Cargo Shorts",
+    "Brand" : "Dnzuns",
+    "Price" : 35.99},
+
+    {
+    "Pants/Shorts Name" : "Slim Track Joggers",
+    "Description" : "White Joggers",
+    "Brand" : "Dnzuns",
+    "Price" : 45.99},
+
+    {
+    "Pants/Shorts Name" : "Cargo Joggers",
+    "Description" : "Khhaki Cargo Joggars",
+    "Brand" : "Dnzuns",
+    "Price" : 50.25},
+
+    {
+    "Pants/Shorts Name" : "Chino Short",
+    "Description" : "Navy Chino Shorts",
+    "Brand" : "Dnzuns",
+    "Price" : 15.99},
+
+    #Jmun
+
+    {
+    "Pants/Shorts Name" : "Running Shorts",
+    "Description" : "Green Athletic Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 25.99},
+
+    {
+    "Pants/Shorts Name" : "Denim Shorts",
+    "Description" : "Light Wash Denim Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 50.99},
+
+    {
+    "Pants/Shorts Name" : "Thermal Joggers",
+    "Description" : "Maroon Thermal Joggers",
+    "Brand" : "Jmuns",
+    "Price" : 50.35},
+
+    {
+    "Pants/Shorts Name" : "Sweat Shorts",
+    "Description" : "Pink Sweat Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 35.99},
+
+    {
+    "Pants/Shorts Name" : "Gym Shorts",
+    "Description" : "Heather Grey Gym Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 30.89},
+
+    #Rozz
+
+    {
+    "Pants/Shorts Name" : "Basketball Shorts",
+    "Description" : "Black Athletic Wear",
+    "Brand" : "Rozz",
+    "Price" : 30.49},
+
+    {
+    "Pants/Shorts Name" : "Cotton Joggers",
+    "Description" : "Grey Cotton Jogger",
+    "Brand" : "Rozz",
+    "Price" : 40.99},
+    {
+    "Pants/Shorts Name" : "Khaki Shorts",
+    "Description" : "Stone wash Khaki",
+    "Brand" : "Rozz",
+    "Price" : 40.99},
+    {
+    "Pants/Shorts Name" : "Tapered Joggers",
+    "Description" : "Navy Blue Joggers",
+    "Brand" : "Rozz",
+    "Price" : 50.75},
+
+    {
+    "Pants/Shorts Name" : "Navy Blue Shorts",
+    "Description" : "Navy Blue Athletic Shorts",
+    "Brand" : "Rozz",
+    "Price" : 25.95},
+
+    #Dj2fyes
+
+    {
+    "Pants/Shorts Name" : "Slim Fit Joggers",
+    "Description" : "Green Jogging Pants",
+    "Brand" : "Dj2fyes",
+    "Price" : 58.99},
+
+    {
+    "Pants/Shorts Name" : "Bike Shorts",
+    "Description" : "Red Biking Shorts",
+    "Brand" : "Dj2fyes",
+    "Price" : 25.99},
+    {
+    "Pants/Shorts Name" : "Board Shorts",
+    "Description" : "Turquoise Shorts",
+    "Brand" : "Dj2fyes",
+    "Price" : 45.99},
+    {
+    "Pants/Shorts Name" : " Tech Fleece Joggers",
+    "Description" : "Charcoal Tech Fleece Joggers",
+    "Brand" : "Dj2fyes",
+    "Price" : 60.49},
+
+    {
+    "Pants/Shorts Name" : "Drawstring Joggers",
+    "Description" : "Burgundy Joggers",
+    "Brand" : "Dj2fyes",
+    "Price" : 35.99},
+
+    #Swipes
+    
+    {
+    "Pants/Shorts Name" : "Camo Joggers",
+    "Description" : "Camouflage Joggers",
+    "Brand" : "Swipes",
+    "Price" : 55.50},
+
+    {
+    "Pants/Shorts Name" : "Jogger Jeans",
+    "Description" : "Light Blue Joggers",
+    "Brand" : "Swipes",
+    "Price" : 70.89},
+    {
+    "Pants/Shorts Name" : "High-Waisted Joggers",
+    "Description" : "Beige High-Waisted Joggers",
+    "Brand" : "Swipes",
+    "Price" : 40.59},
+    {
+    "Pants/Shorts Name" : "Mesh Joggers",
+    "Description" : "Teal Mesh Joggers",
+    "Brand" : "Swipes",
+    "Price" : 35.49},
+
+    {
+    "Pants/Shorts Name" : "Velour Joggers",
+    "Description" : "Purple Velour Joggers",
+    "Brand" : "Swipes",
+    "Price" : 65.79},
+
+    #Topias
+
+
+    {
+    "Pants/Shorts Name" : "Mesh Joggers",
+    "Description" : "Teal Mesh Joggers",
+    "Brand" : "Topias",
+    "Price" : 35.00},
+
+    {
+    "Pants/Shorts Name" : "Mesh Joggers",
+    "Description" : "Blue Mesh Jogger",
+    "Brand" : "Topias",
+    "Price" : 35.00},
+    {
+    "Pants/Shorts Name" : "Thermal Joggers",
+    "Description" : "Thermal Grey Joggers",
+    "Brand" : "Topias",
+    "Price" : 50.00},
+    {
+    "Pants/Shorts Name" : "High-Waisted Joggers",
+    "Description" : "Beige High-Wasisted Joggers",
+    "Brand" : "Topias",
+    "Price" : 40.00},
+
+    {
+    "Pants/Shorts Name" : "Zip Pocket Joggers",
+    "Description" : "Orange Full-Zip Joggers",
+    "Brand" : "Topias",
+    "Price" : 55.00},
+]
+
+'''
+Basketball Shorts - Black - $30.49
+Cargo Shorts - Tan - $35.99
+Running Shorts - Neon Green - $25.50
+Denim Shorts - Light Wash - $50.99
+Chino Shorts - Navy - $40.75
+Board Shorts - Turquoise - $45.59
+Bike Shorts - Red - $25.99
+Gym Shorts - Heather Grey - $30.89
+Sweat Shorts - Pink - $35.69
+Khaki Shorts - Stone - $40.99
+
+Cotton Joggers - Black - $40.99
+Fleece Joggers - Grey - $45.50
+Tapered Joggers - Navy Blue - $50.75
+Slim Fit Joggers - Olive Green - $55.99
+Tech Fleece Joggers - Charcoal - $60.49
+Cargo Joggers - Khaki - $50.25
+Drawstring Joggers - Burgundy - $35.99
+Track Joggers - White - $45.99
+Camo Joggers - Camouflage - $55.50
+Jogger Jeans - Light Blue - $70.89
+Thermal Joggers - Maroon - $50.35
+Zip Pocket Joggers - Royal Blue - $55.99
+High-Waisted Joggers - Beige - $40.59
+Mesh Joggers - Teal - $35.49
+Velour Joggers - Purple - $65.79
+'''
