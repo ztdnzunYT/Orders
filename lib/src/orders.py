@@ -22,14 +22,10 @@ class Windows:
         #dpg.add_spacer(height=100)
 
         with dpg.child_window(width=185,height=100,border=True,tag="child_background_window") as profile_background:
-            pfp = dpg.load_image("lib\\assets\\profile-icon-9.png")
-            pfp_width,pfp_height,pfp_channels,pfp_data = pfp
-            
-            with dpg.texture_registry():
-                dpg.add_static_texture(pfp_width,pfp_height,pfp_data,tag="pfp")
+            pass
 
             with dpg.group(horizontal=True):
-                dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
+          
                 dpg.add_text(f"\nHub Name\n------\nHub Rating")
             dpg.add_text(f"Name")
 
@@ -46,7 +42,7 @@ class Windows:
                 #dpg.show_item(str(app_data.lower()+"_table"))
                 dpg.show_item(app_data.lower()+"_table")
                 print(dpg.get_item_children(app_data.lower()+"_table"))
-                dpg.set_item_children()
+       
         
     
                 
