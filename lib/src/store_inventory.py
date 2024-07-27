@@ -572,39 +572,6 @@ pants_shorts = [
 
 accessories = [
 
-
-    """
-  
-
-    
-    
-    Shoe Polish - $7.49
-    Shoe Brush - $11.99
-    Shoe Deodorizer - $14.99
-    Shoe Trees - $24.99
-    Boot Shaper - $19.99
-    Gel Cushions - $10.99
-    Heel Pads - $9.99
-    Arch Supports - $24.99
-    Foot Powder - $7.99
-    Shoe Stretch Spray - $12.99
-    Waterproofing Spray - $15.99
-    Shoe Shine Cloth - $4.49
-    Toe Separators - $8.99
-    Shoe Repair Kit - $19.99
-    Lace Locks - $5.99
-    Heel Cups - $14.99
-   
-    
-    
-    
-    
-    
-    
-    
-    """,
-
-
     #Dnzun
 
     {
@@ -683,143 +650,111 @@ accessories = [
     "Brand" : "Rozz",
     "Price" : 9.99},
     {
-    "Pants/Shorts Name" : " Metatarsal Pads",
+    "Pants/Shorts Name" : "Metatarsal Pads",
     "Description" : "Shoe Accessories",
     "Brand" : "Rozz",
     "Price" : 11.99},
     {
-    "Pants/Shorts Name" : "Tapered Joggers",
+    "Pants/Shorts Name" : "Shoe Polish",
     "Description" : "Shoe Accessories",
     "Brand" : "Rozz",
-    "Price" : 50.75},
+    "Price" : 7.49},
 
     {
-    "Pants/Shorts Name" : "Navy Blue Shorts",
+    "Pants/Shorts Name" : "Shoe Brush",
     "Description" : "Shoe Accessories",
     "Brand" : "Rozz",
-    "Price" : 25.95},
+    "Price" : 11.99},
 
     #Dj2fyes
 
     {
-    "Pants/Shorts Name" : "Slim Fit Joggers",
+    "Pants/Shorts Name" : "Shoe Deodorizer",
     "Description" : "Shoe Accessories",
     "Brand" : "Dj2fyes",
-    "Price" : 58.99},
+    "Price" : 14.99},
 
     {
-    "Pants/Shorts Name" : "Bike Shorts",
+    "Pants/Shorts Name" : "Shoe Trees",
     "Description" : "Shoe Accessories",
     "Brand" : "Dj2fyes",
     "Price" : 25.99},
     {
-    "Pants/Shorts Name" : "Board Shorts",
+    "Pants/Shorts Name" : "Boot Shaper",
     "Description" : "Shoe Accessories",
     "Brand" : "Dj2fyes",
-    "Price" : 45.99},
+    "Price" : 19.99},
     {
-    "Pants/Shorts Name" : " Tech Fleece Joggers",
+    "Pants/Shorts Name" : "Gel Cushions",
     "Description" : "Shoe Accessories",
     "Brand" : "Dj2fyes",
-    "Price" : 60.49},
+    "Price" : 10.99},
 
     {
-    "Pants/Shorts Name" : "Drawstring Joggers",
+    "Pants/Shorts Name" : "Heel Pads",
     "Description" : "Shoe Accessories",
     "Brand" : "Dj2fyes",
-    "Price" : 35.99},
+    "Price" : 9.99},
 
     #Swipes
     
     {
-    "Pants/Shorts Name" : "Camo Joggers",
+    "Pants/Shorts Name" : "Shoe Repair Kit",
     "Description" : "Shoe Accessories",
     "Brand" : "Swipes",
-    "Price" : 55.50},
+    "Price" : 19.99},
 
     {
-    "Pants/Shorts Name" : "Jogger Jeans",
+    "Pants/Shorts Name" : "Arch Supports",
     "Description" : "Shoe Accessories",
     "Brand" : "Swipes",
-    "Price" : 70.89},
+    "Price" : 24.99},
     {
-    "Pants/Shorts Name" : "High-Waisted Joggers",
+    "Pants/Shorts Name" : "Foot Powder",
     "Description" : "Shoe Accessories",
     "Brand" : "Swipes",
-    "Price" : 40.59},
+    "Price" : 7.99},
     {
-    "Pants/Shorts Name" : "Mesh Joggers",
+    "Pants/Shorts Name" : "Shoe Stretch Spray",
     "Description" : "Shoe Accessories",
     "Brand" : "Swipes",
-    "Price" : 35.49},
+    "Price" : 12.99},
 
     {
-    "Pants/Shorts Name" : "Velour Joggers",
+    "Pants/Shorts Name" : "Waterproofing Spray",
     "Description" : "Shoe Accessories",
     "Brand" : "Swipes",
-    "Price" : 65.79},
+    "Price" : 15.99},
 
     #Topias
 
 
     {
-    "Pants/Shorts Name" : "Mesh Joggers",
+    "Pants/Shorts Name" : "Shoe Shine Cloth",
     "Description" : "Shoe Accessories",
     "Brand" : "Topias",
-    "Price" : 35.00},
+    "Price" : 4.49},
 
     {
-    "Pants/Shorts Name" : "Mesh Joggers",
+    "Pants/Shorts Name" : "Toe Separators",
     "Description" : "Shoe Accessories",
     "Brand" : "Topias",
-    "Price" : 35.00},
+    "Price" : 8.99},
     {
-    "Pants/Shorts Name" : "Thermal Joggers",
+    "Pants/Shorts Name" : "Lace Locks",
     "Description" : "Shoe Accessories",
     "Brand" : "Topias",
-    "Price" : 50.00},
+    "Price" : 5.99},
     {
-    "Pants/Shorts Name" : "High-Waisted Joggers",
+    "Pants/Shorts Name" : "Heel Cups",
     "Description" : "Shoe Accessories",
     "Brand" : "Topias",
-    "Price" : 40.00},
+    "Price" : 14.99},
 
     {
-    "Pants/Shorts Name" : "Zip Pocket Joggers",
+    "Pants/Shorts Name" : "Lint Roller",
     "Description" : "Shoe Accessories",
     "Brand" : "Topias",
-    "Price" : 55.00},
+    "Price" : 12.99},
 ]
 
-"""
-Shoe Laces - $4.99
-Insoles - $19.99
-Heel Grips - $9.99
-Shoe Horn - $14.99
-Shoe Polish - $7.49
-Shoe Brush - $11.99
-Shoe Cleaner - $9.49
-Shoe Deodorizer - $14.99
-Shoe Trees - $24.99
-Boot Shaper - $19.99
-Shoe Storage Bag - $9.99
-Gel Cushions - $10.99
-Heel Pads - $9.99
-Arch Supports - $24.99
-Foot Powder - $7.99
-Shoe Stretch Spray - $12.99
-Waterproofing Spray - $15.99
-Shoe Shine Cloth - $4.49
-Toe Separators - $8.99
-Shoe Repair Kit - $19.99
-Lace Locks - $5.99
-Heel Cups - $14.99
-Metatarsal Pads - $11.99
-Silicone Heel Protectors - $9.99
-Foot Odor Spray - $11.49
-Shoe Shine Kit - $29.99
-Anti-Slip Pads - $6.99
-Orthotic Inserts - $29.99
-Shoe Drying Rack - $14.99
-Odor-Eliminating Insoles - $12.99
-"""
