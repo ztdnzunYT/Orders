@@ -1,31 +1,19 @@
-import dearpygui.dearpygui as dpg
+class Class2:
 
-dpg.create_context()
+    class Labels:
+        c2l1 = 'label 1'
+        c2l2 = 'label 2' 
 
-with dpg.theme() as table_theme:
-    with dpg.theme_component(dpg.mvTable):
-        # dpg.add_theme_color(dpg.mvThemeCol_HeaderHovered, (255, 0, 0, 100), category=dpg.mvThemeCat_Core)
-        dpg.add_theme_color(dpg.mvThemeCol_HeaderActive, (0, 0, 0, 0), category=dpg.mvThemeCat_Core)
-        dpg.add_theme_color(dpg.mvThemeCol_Header, (0, 0, 0, 0), category=dpg.mvThemeCat_Core)
+    class Params:
+        pass 
+        # p1 = None
+        # p2 = None
+        # p3 = None
 
-def clb_selectable(sender, app_data, user_data):
-    print(f"Row {user_data}")
-
-with dpg.window(tag="Selectable Tables"):
-    with dpg.table(tag="SelectRows", header_row=True) as selectablerows:
-        dpg.add_table_column(label="First")
-        dpg.add_table_column(label="Second")
-        dpg.add_table_column(label="Third")
-
-        for i in range(15):
-            with dpg.table_row():
-                for j in range(3):
-                    dpg.add_selectable(label=f"Row{i} Column{j}", span_columns=True, callback=clb_selectable, user_data=i)
-   
+    Params.p1 = Labels.c2l2
+    Params.p2 = 1234
 
 
-dpg.create_viewport(width=800, height=600)
-dpg.setup_dearpygui()
-dpg.show_viewport()
-dpg.start_dearpygui()
-dpg.destroy_context()
+print(Class2.Params.p1)
+print(Class2.Params.p2)
+# print(Class2.Params.p3)

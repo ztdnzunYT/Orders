@@ -1,6 +1,5 @@
 
 # ("Dnzuns","Jmuns","Rozz","Dj2Fyes","Swipes","Topias",)
-
 shoes = [
     
 
@@ -378,5 +377,383 @@ shirts = [
     "Brand" : "Topias",
     "Price" : 26.99},
 
+]
+
+pants = [
+
+
+    #Dnzun
+
+    {
+    "Pants Name" : "Fleece Joggers",
+    "Description" : "Black Joggers",
+    "Brand" : "Dnzuns",
+    "Price" : 45.50},
+
+    {
+    "Pants Name" : "Cargo Shorts",
+    "Description" : "Tan Cargo Shorts",
+    "Brand" : "Dnzuns",
+    "Price" : 35.99},
+
+    {
+    "Pants Name" : "Slim Track Joggers",
+    "Description" : "White Joggers",
+    "Brand" : "Dnzuns",
+    "Price" : 45.99},
+
+    {
+    "Pants Name" : "Cargo Joggers",
+    "Description" : "Khhaki Cargo Joggars",
+    "Brand" : "Dnzuns",
+    "Price" : 50.25},
+
+    {
+    "Pants Name" : "Chino Short",
+    "Description" : "Navy Chino Shorts",
+    "Brand" : "Dnzuns",
+    "Price" : 15.99},
+
+    #Jmun
+
+    {
+    "Pants Name" : "Running Shorts",
+    "Description" : "Green Athletic Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 25.99},
+
+    {
+    "Pants Name" : "Denim Shorts",
+    "Description" : "Light Wash Denim Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 50.99},
+
+    {
+    "Pants Name" : "Thermal Joggers",
+    "Description" : "Maroon Thermal Joggers",
+    "Brand" : "Jmuns",
+    "Price" : 50.35},
+
+    {
+    "Pants Name" : "Sweat Shorts",
+    "Description" : "Pink Sweat Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 35.99},
+
+    {
+    "Pants Name" : "Gym Shorts",
+    "Description" : "Heather Grey Gym Shorts",
+    "Brand" : "Jmuns",
+    "Price" : 30.89},
+
+    #Rozz
+
+    {
+    "Pants Name" : "Basketball Shorts",
+    "Description" : "Black Athletic Wear",
+    "Brand" : "Rozz",
+    "Price" : 30.49},
+
+    {
+    "Pants Name" : "Cotton Joggers",
+    "Description" : "Grey Cotton Jogger",
+    "Brand" : "Rozz",
+    "Price" : 40.99},
+    {
+    "Pants Name" : "Khaki Shorts",
+    "Description" : "Stone wash Khaki",
+    "Brand" : "Rozz",
+    "Price" : 40.99},
+    {
+    "Pants Name" : "Tapered Joggers",
+    "Description" : "Navy Blue Joggers",
+    "Brand" : "Rozz",
+    "Price" : 50.75},
+
+    {
+    "Pants Name" : "Navy Blue Shorts",
+    "Description" : "Navy Blue Athletic Shorts",
+    "Brand" : "Rozz",
+    "Price" : 25.95},
+
+    #Dj2fyes
+
+    {
+    "Pants Name" : "Slim Fit Joggers",
+    "Description" : "Green Jogging Pants",
+    "Brand" : "Dj2fyes",
+    "Price" : 58.99},
+
+    {
+    "Pants Name" : "Bike Shorts",
+    "Description" : "Red Biking Shorts",
+    "Brand" : "Dj2fyes",
+    "Price" : 25.99},
+    {
+    "Pants Name" : "Board Shorts",
+    "Description" : "Turquoise Shorts",
+    "Brand" : "Dj2fyes",
+    "Price" : 45.99},
+    {
+    "Pants Name" : " Tech Fleece Joggers",
+    "Description" : "Charcoal Tech Fleece Joggers",
+    "Brand" : "Dj2fyes",
+    "Price" : 60.49},
+
+    {
+    "Pants Name" : "Drawstring Joggers",
+    "Description" : "Burgundy Joggers",
+    "Brand" : "Dj2fyes",
+    "Price" : 35.99},
+
+    #Swipes
+    
+    {
+    "Pants Name" : "Camo Joggers",
+    "Description" : "Camouflage Joggers",
+    "Brand" : "Swipes",
+    "Price" : 55.50},
+
+    {
+    "Pants Name" : "Jogger Jeans",
+    "Description" : "Light Blue Joggers",
+    "Brand" : "Swipes",
+    "Price" : 70.89},
+    {
+    "Pants Name" : "High-Waisted Joggers",
+    "Description" : "Beige High-Waisted Joggers",
+    "Brand" : "Swipes",
+    "Price" : 40.59},
+    {
+    "Pants Name" : "Mesh Joggers",
+    "Description" : "Teal Mesh Joggers",
+    "Brand" : "Swipes",
+    "Price" : 35.49},
+
+    {
+    "Pants Name" : "Velour Joggers",
+    "Description" : "Purple Velour Joggers",
+    "Brand" : "Swipes",
+    "Price" : 65.79},
+
+    #Topias
+
+
+    {
+    "Pants Name" : "Mesh Joggers",
+    "Description" : "Teal Mesh Joggers",
+    "Brand" : "Topias",
+    "Price" : 35.00},
+
+    {
+    "Pants Name" : "Mesh Joggers",
+    "Description" : "Blue Mesh Jogger",
+    "Brand" : "Topias",
+    "Price" : 35.00},
+    {
+    "Pants Name" : "Thermal Joggers",
+    "Description" : "Thermal Grey Joggers",
+    "Brand" : "Topias",
+    "Price" : 50.00},
+    {
+    "Pants Name" : "High-Waisted Joggers",
+    "Description" : "Beige High-Wasisted Joggers",
+    "Brand" : "Topias",
+    "Price" : 40.00},
+
+    {
+    "Pants Name" : "Zip Pocket Joggers",
+    "Description" : "Orange Full-Zip Joggers",
+    "Brand" : "Topias",
+    "Price" : 55.00},
+]
+
+
+accessories = [
+
+    #Dnzun
+
+    {
+    "Accessory Name" : "Shoe Laces",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dnzuns",
+    "Price" : 4.99},
+
+    {
+    "Accessory Name" : "Insoles",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dnzuns",
+    "Price" : 19.99},
+
+    {
+    "Accessory Name" : "Shoe Cleaner",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dnzuns",
+    "Price" : 9.49},
+
+    {
+    "Accessory Name" : "Heel Grips",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dnzuns",
+    "Price" : 9.99},
+
+    {
+    "Accessory Name" : "Shoe Horn",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dnzuns",
+    "Price" : 14.99},
+
+    #Jmun
+
+    {
+    "Accessory Name" : "Odor-Eliminating Insoles",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Jmuns",
+    "Price" : 12.99},
+
+    {
+    "Accessory Name" : "Shoe Drying Rack",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Jmuns",
+    "Price" : 14.99},
+
+    {
+    "Accessory Name" : "Orthotic Inserts",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Jmuns",
+    "Price" : 29.99},
+
+    {
+    "Accessory Name" : "Anti-Slip Pads",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Jmuns",
+    "Price" : 6.99},
+
+    {
+    "Accessory Name" : "Shoe Shine Kit",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Jmuns",
+    "Price" : 29.99},
+
+    #Rozz
+
+    {
+    "Accessory Name" : "Foot Odor Spray",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Rozz",
+    "Price" : 11.49},
+
+    {
+    "Accessory Name" : "Silicone Heel Protectors",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Rozz",
+    "Price" : 9.99},
+    {
+    "Accessory Name" : "Metatarsal Pads",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Rozz",
+    "Price" : 11.99},
+    {
+    "Accessory Name" : "Shoe Polish",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Rozz",
+    "Price" : 7.49},
+
+    {
+    "Accessory Name" : "Shoe Brush",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Rozz",
+    "Price" : 11.99},
+
+    #Dj2fyes
+
+    {
+    "Accessory Name" : "Shoe Deodorizer",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dj2fyes",
+    "Price" : 14.99},
+
+    {
+    "Accessory Name" : "Shoe Trees",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dj2fyes",
+    "Price" : 25.99},
+    {
+    "Accessory Name" : "Boot Shaper",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dj2fyes",
+    "Price" : 19.99},
+    {
+    "Accessory Name" : "Gel Cushions",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dj2fyes",
+    "Price" : 10.99},
+
+    {
+    "Accessory Name" : "Heel Pads",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Dj2fyes",
+    "Price" : 9.99},
+
+    #Swipes
+    
+    {
+    "Accessory Name" : "Shoe Repair Kit",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Swipes",
+    "Price" : 19.99},
+
+    {
+    "Accessory Name" : "Arch Supports",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Swipes",
+    "Price" : 24.99},
+    {
+    "Accessory Name" : "Foot Powder",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Swipes",
+    "Price" : 7.99},
+    {
+    "Accessory Name" : "Shoe Stretch Spray",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Swipes",
+    "Price" : 12.99},
+
+    {
+    "Accessory Name" : "Waterproofing Spray",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Swipes",
+    "Price" : 15.99},
+
+    #Topias
+
+
+    {
+    "Accessory Name" : "Shoe Shine Cloth",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Topias",
+    "Price" : 4.49},
+
+    {
+    "Accessory Name" : "Toe Separators",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Topias",
+    "Price" : 8.99},
+    {
+    "Accessory Name" : "Lace Locks",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Topias",
+    "Price" : 5.99},
+    {
+    "Accessory Name" : "Heel Cups",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Topias",
+    "Price" : 14.99},
+
+    {
+    "Accessory Name" : "Lint Roller",
+    "Description" : "Shoe Accessories",
+    "Brand" : "Topias",
+    "Price" : 12.99},
 ]
 
