@@ -1,19 +1,12 @@
-class Class2:
+import dearpygui.dearpygui as dpg
+import dearpygui.demo as demo
 
-    class Labels:
-        c2l1 = 'label 1'
-        c2l2 = 'label 2' 
+dpg.create_context()
+dpg.create_viewport(title='Custom Title', width=600, height=600)
 
-    class Params:
-        pass 
-        # p1 = None
-        # p2 = None
-        # p3 = None
+demo.show_demo()
 
-    Params.p1 = Labels.c2l2
-    Params.p2 = 1234
-
-
-print(Class2.Params.p1)
-print(Class2.Params.p2)
-# print(Class2.Params.p3)
+dpg.setup_dearpygui()
+dpg.show_viewport()
+dpg.start_dearpygui()
+dpg.destroy_context()

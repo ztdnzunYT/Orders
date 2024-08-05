@@ -115,10 +115,6 @@ class Windows:
                 for item in Windows.Main_Window.selectables:
                     dpg.set_value(item,False)
                 print("Cart Order Cleared")
-
-
-        def __init__(self):
-            self.test = Windows.Side_menu.Window_manager.clear_orders()
     
         with dpg.window(label="store_info_window",tag="store_info_window", pos=(225,10),width=500,
             height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=True) as store_info_window:
@@ -235,16 +231,24 @@ class Windows:
 
     
     #may be able to do a login window
-
+    
 
     with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
         no_move=True,no_title_bar=True,no_resize=True) as customer_window:
         dpg.create_context()
         
-
-    with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,
-        no_move=True,no_title_bar=True,no_resize=True) as phone_window:
-        dpg.create_context()
+    class Phone_window:
+        with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,
+            no_move=True,no_title_bar=True,no_resize=True) as phone_window:
+            dpg.create_context()
+            dpg.add_button(label="Department Phone",width=dpg.get_item_width("phone_window")-15,height=30)
+            dpg.add_spacer(height=5)
+            
+            with dpg.group(horizontal=True):
+                dpg.add_input_text(hint="Input store number",tag="input_store_number")
+                with dpg.tooltip("input_store_number"):
+                    dpg.add_text("Call store # to place an order")
+                dpg.add_button(label="Call")
 
     with dpg.window(label="checkout_window",tag="checkout_window", pos=(225,355),width=750,height=globals.HEIGHT/3.07,no_close=True,
         no_move=True,no_title_bar=True,no_resize=True) as checkout_window:
@@ -272,7 +276,7 @@ class Binded_themes:
     dpg.bind_item_theme(Windows.Side_menu.side_menu_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.Main_Window.store_info_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.customer_window,Theme.window_theme)
-    dpg.bind_item_theme(Windows.phone_window,Theme.window_theme)
+    dpg.bind_item_theme(Windows.Phone_window.phone_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.checkout_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.Side_menu.profile_background,Theme.child_window_theme)
     dpg.bind_item_theme(Windows.Main_Window.store_info_cw,Windows.Main_Window.scrollbar_size) 

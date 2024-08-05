@@ -568,7 +568,6 @@ pants = [
     "Price" : 55.00},
 ]
 
-
 accessories = [
 
     #Dnzun
