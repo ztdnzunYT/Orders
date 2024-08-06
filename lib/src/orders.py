@@ -60,7 +60,6 @@ class Windows:
                     dpg.add_text(f"\nHub Name\n------\nHub Rating")
                 dpg.add_text(f"Name")
 
-            
         
             dpg.add_spacer(height=1) 
             store_info_button = dpg.add_button(label="Store Info",tag="store_info_button",callback=Window_manager.window_manager,user_data="store_info_window")
@@ -84,7 +83,9 @@ class Windows:
                 #dpg.set_axis_limits(dpg.last_item(), 0,50)
                 # Add line series to the y axis
                 dpg.add_line_series(x_data, y_data, label="Parabola", parent=dpg.last_item())
+            
             dpg.add_spacer(height=15)
+            
             with dpg.group(horizontal=True):
                 Help_button = dpg.add_button(label="?")
                 dpg.add_text("HELP")
@@ -194,8 +195,6 @@ class Windows:
                                 dpg.add_text(f"${pant[category]:.2f}")
                             else:
                                 selectables.append(dpg.add_selectable(label=pant[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=pant))
-        
-            
 
             with dpg.table(tag="accessories_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
                 row_background=False,resizable=False,show=False) as accessories_table:
@@ -210,8 +209,6 @@ class Windows:
                                 dpg.add_text(f"${accessory[category]:.2f}")
                             else:
                                 selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
-        
-
 
 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
@@ -229,25 +226,37 @@ class Windows:
         dpg.create_context()
         dpg.add_text("sales analytics")
 
+
     
     #may be able to do a login window
     
 
     with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
         no_move=True,no_title_bar=True,no_resize=True) as customer_window:
-        dpg.create_context()
-        
+        dpg.add_text("Recipt")
+        dpg.add_separator()
+        dpg.add_text("Store Name :")
+        dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=0)
+        dpg.add_spacer(height=2)
+
+        with dpg.table(header_row=False,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True):
+            dpg.add_table_column(label="Item")
+            dpg.add_table_column(label="Cost") 
+            with dpg.table_row():
+                dpg.add_text("Item")
+                dpg.add_text("Cost")
+        dpg.add_text("Total :")
+    
+    
     class Phone_window:
         with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,
             no_move=True,no_title_bar=True,no_resize=True) as phone_window:
-            dpg.create_context()
             dpg.add_button(label="Department Phone",width=dpg.get_item_width("phone_window")-15,height=30)
-            dpg.add_spacer(height=5)
-            
+            dpg.add_text("ORDER SELECTED :")
             with dpg.group(horizontal=True):
                 dpg.add_input_text(hint="Input store number",tag="input_store_number")
                 with dpg.tooltip("input_store_number"):
-                    dpg.add_text("Call store # to place an order")
+                    dpg.add_text("*Call store to place selected order")
                 dpg.add_button(label="Call")
 
     with dpg.window(label="checkout_window",tag="checkout_window", pos=(225,355),width=750,height=globals.HEIGHT/3.07,no_close=True,
