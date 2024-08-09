@@ -4,10 +4,20 @@ import dearpygui.dearpygui as dpg
 dpg.create_context()
 
 # Create a window
-dpg.show_imgui_demo()
+with dpg.window(label="Vertical Line Separator Example", width=300, height=200):
+
+    # Create a horizontal group for items
+    with dpg.group(horizontal=True):
+        dpg.add_button(label="Button 1")
+
+        # Create a vertical line separator using a drawing canvas
+        with dpg.drawlist(width=5, height=100):
+            dpg.draw_line((2, 0), (2, 100), color=(0, 0, 0, 255), thickness=1)
+
+        dpg.add_button(label="Button 2")
 
 # Show the viewport
-dpg.create_viewport(title='Basic Table Example', width=400, height=300)
+dpg.create_viewport(title='Vertical Line Separator Example', width=400, height=200)
 dpg.setup_dearpygui()
 dpg.show_viewport()
 

@@ -195,18 +195,28 @@ class Windows:
                                 selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
 
 
+    def add_orders():
+        for i in range(5):
+            with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False):
+                dpg.add_text("Name:")
+                with dpg.group(horizontal=True):
+                    dpg.add_text("Status")
+                    dpg.add_checkbox(default_value=False) 
+                    dpg.add_button(label="View Order")
+                dpg.add_separator()
+
 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
         dpg.create_context()
-        dpg.add_text("incoming orders")
+        with dpg.group(horizontal=True):
+            dpg.add_text("incoming orders")
+            dpg.add_button(label="Refresh Orders",tag="refresh_orders",callback=add_orders)
 
         with dpg.group(horizontal=True):
-
-            with dpg.child_window(tag="incomming_orders",width=dpg.get_item_width(incoming_orders_window)//2.5):
-                with dpg.child_window(height=55,border=False):
-                    pass
-                    
+            with dpg.child_window(tag="incomming_orders",width=dpg.get_item_width(incoming_orders_window)//2.5) as incoming_orders:
+                pass
+        
             with dpg.child_window(tag="incoming_order_list"):
                 pass
 
@@ -219,8 +229,6 @@ class Windows:
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as sales_analytics_window:
         dpg.create_context()
         dpg.add_text("sales analytics")
-
-
 
     
     #may be able to do a login window
@@ -284,7 +292,7 @@ class Binded_themes:
     dpg.bind_item_theme(Windows.checkout_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.Side_menu.profile_background,Theme.child_window_theme)
     dpg.bind_item_theme(Windows.Main_Window.store_info_cw,Windows.Main_Window.scrollbar_size) 
-    for window in Windows.main_menu_windows:
+    for window in Windows.main_menu_windows: 
         dpg.bind_item_theme(window,Theme.window_theme)
 
 
