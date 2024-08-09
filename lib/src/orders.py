@@ -10,11 +10,9 @@ class globals:
 dpg.create_context()
 dpg.create_viewport(title=" ",width=globals.WIDTH, height=globals.HEIGHT,decorated=True,resizable=False)
 
-class Windows: 
-    
-    class Side_menu:
 
-        class Window_manager: 
+
+class Window_manager: 
                         
             def window_manager(sender,app_data,user_data):
                 for window in Windows.main_menu_windows:
@@ -36,6 +34,13 @@ class Windows:
                 for item in Windows.Main_Window.selectables:
                     dpg.set_value(item,False)
                 print("Cart Order Cleared")
+
+
+class Windows: 
+    
+    class Side_menu:
+
+       
 
         with dpg.window(label="background_window", tag="background_window") as background_window:
             dpg.create_context()
@@ -95,27 +100,6 @@ class Windows:
 
 
     class Main_Window:
-        class Window_manager: 
-                            
-            def window_manager(sender,app_data,user_data):
-                for window in Windows.main_menu_windows:
-                    dpg.hide_item(window)
-                dpg.show_item(user_data)
-
-            def store_inventory_table_manager(sender,app_data,user_data):
-                for window in Windows.store_inventory_tables:
-                    dpg.hide_item(window)
-                #dpg.show_item(str(app_data.lower()+"_table"))
-                print(app_data)
-                dpg.show_item(app_data.lower()+"_table")
-            
-            def category_info(sender,app_data,user_data):
-                print(f"{sender,app_data}")
-            
-            def clear_orders():
-                for item in Windows.Main_Window.selectables:
-                    dpg.set_value(item,False)
-                print("Cart Order Cleared")
     
         with dpg.window(label="store_info_window",tag="store_info_window", pos=(225,10),width=500,
             height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=True) as store_info_window:
@@ -211,10 +195,20 @@ class Windows:
                                 selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
 
 
+
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
         dpg.create_context()
         dpg.add_text("incoming orders")
+
+        with dpg.group(horizontal=True):
+
+            with dpg.child_window(tag="incomming_orders",width=dpg.get_item_width(incoming_orders_window)//2.5):
+                with dpg.child_window(height=55,border=False):
+                    pass
+                    
+            with dpg.child_window(tag="incoming_order_list"):
+                pass
 
     with dpg.window(label="recieve_shipment_window",tag="recieve_shipment_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as recieve_shipment_window:
@@ -225,6 +219,7 @@ class Windows:
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as sales_analytics_window:
         dpg.create_context()
         dpg.add_text("sales analytics")
+
 
 
     
