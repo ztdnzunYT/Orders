@@ -203,15 +203,15 @@ class Windows:
     def new_orders():
         for i in range(5):
             with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False) as new_order:
-                dpg.add_text("Name:")
+                with dpg.group(horizontal=True,horizontal_spacing=10):
+                    dpg.add_text(f"#{i}")
+                    dpg.add_text("Name:")
                 with dpg.group(horizontal=True):
                     dpg.add_text("Status")
                     dpg.add_checkbox(default_value=False) 
                     data = random.randint(1,100)
                     dpg.add_button(label="View Order",user_data=data,callback=Windows.test)
                 dpg.add_separator()
-
-
 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
