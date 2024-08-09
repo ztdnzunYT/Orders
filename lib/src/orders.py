@@ -2,6 +2,7 @@ import dearpygui.dearpygui as dpg
 from stores_info import stores
 from store_inventory import shoes,shirts,pants,accessories
 import time
+import random
 
 class globals:
     WIDTH = 1000
@@ -145,7 +146,9 @@ class Windows:
                 for shoe in shoes:
                     with dpg.table_row():
                         for category in shoes[0]:
-                            if category == "Description":
+                            if category == "Shoe Name":
+                                dpg.add_text(shoe[category],wrap=170)
+                            elif category == "Description":
                                 dpg.add_text(f"{shoe[category]}",wrap=170)
                             elif category == "Price":
                                 dpg.add_text(f"${shoe[category]:.2f}")
@@ -194,16 +197,20 @@ class Windows:
                             else:
                                 selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
 
-
-    def add_orders():
+    def test():
+        print("This will be the data")
+        
+    def new_orders():
         for i in range(5):
-            with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False):
+            with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False) as new_order:
                 dpg.add_text("Name:")
                 with dpg.group(horizontal=True):
                     dpg.add_text("Status")
                     dpg.add_checkbox(default_value=False) 
-                    dpg.add_button(label="View Order")
+                    data = random.randint(1,100)
+                    dpg.add_button(label="View Order",user_data=data,callback=Windows.test)
                 dpg.add_separator()
+
 
 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
@@ -211,7 +218,7 @@ class Windows:
         dpg.create_context()
         with dpg.group(horizontal=True):
             dpg.add_text("incoming orders")
-            dpg.add_button(label="Refresh Orders",tag="refresh_orders",callback=add_orders)
+            dpg.add_button(label="Refresh Orders",tag="refresh_orders",callback=new_orders)
 
         with dpg.group(horizontal=True):
             with dpg.child_window(tag="incomming_orders",width=dpg.get_item_width(incoming_orders_window)//2.5) as incoming_orders:
