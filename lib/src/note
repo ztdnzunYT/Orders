@@ -1,0 +1,11 @@
+create os recongonition for the side image by hub 
+
+
+ pfp = dpg.load_image("lib\\assets\\profile-icon-9.png")
+                pfp_width,pfp_height,pfp_channels,pfp_data = pfp
+                
+                with dpg.texture_registry():
+                    dpg.add_static_texture(pfp_width,pfp_height,pfp_data,tag="pfp")
+
+            
+                    dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)

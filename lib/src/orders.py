@@ -41,7 +41,6 @@ class Windows:
     
     class Side_menu:
 
-       
 
         with dpg.window(label="background_window", tag="background_window") as background_window:
             dpg.create_context()
@@ -55,14 +54,12 @@ class Windows:
             #dpg.add_spacer(height=100)
 
             with dpg.child_window(width=185,height=100,border=True,tag="child_background_window") as profile_background:
-                pfp = dpg.load_image("lib\\assets\\profile-icon-9.png")
-                pfp_width,pfp_height,pfp_channels,pfp_data = pfp
+
                 
-                with dpg.texture_registry():
-                    dpg.add_static_texture(pfp_width,pfp_height,pfp_data,tag="pfp")
+
 
                 with dpg.group(horizontal=True):
-                    dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
+                  
                     dpg.add_text(f"\nHub Name\n------\nHub Rating")
                 dpg.add_text(f"Name")
 
@@ -201,7 +198,10 @@ class Windows:
         print("This will be the data")
         
     def new_orders():
-        for i in range(5):
+        for order in Windows.new_order_list:
+            dpg.delete_item(order)
+        Windows.new_order_list.clear()
+        for i in range(random.randint(1,8)):
             with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False) as new_order:
                 with dpg.group(horizontal=True,horizontal_spacing=10):
                     dpg.add_text(f"#{i}")
@@ -212,6 +212,8 @@ class Windows:
                     data = random.randint(1,100)
                     dpg.add_button(label="View Order",user_data=data,callback=Windows.test)
                 dpg.add_separator()
+            Windows.new_order_list.append(new_order)
+        print(Windows.new_order_list)
 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
@@ -219,6 +221,7 @@ class Windows:
         with dpg.group(horizontal=True):
             dpg.add_text("incoming orders")
             dpg.add_button(label="Refresh Orders",tag="refresh_orders",callback=new_orders)
+            new_order_list = []
 
         with dpg.group(horizontal=True):
             with dpg.child_window(tag="incomming_orders",width=dpg.get_item_width(incoming_orders_window)//2.5) as incoming_orders:
