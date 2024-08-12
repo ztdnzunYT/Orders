@@ -756,3 +756,20 @@ accessories = [
     "Price" : 12.99},
 ]
 
+inventory = [shoes,shirts,pants,accessories]
+
+import random
+
+
+
+
+
+nums_of_items = random.randint(1,13)
+category = None
+
+
+
+
+for num in range(nums_of_items):
+    category = random.randint(0,3)
+    #print(list(inventory[category][random.randrange(0,len(inventory[category]))].values())[0])

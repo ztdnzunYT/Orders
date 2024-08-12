@@ -1,6 +1,9 @@
 import dearpygui.dearpygui as dpg
 from stores_info import stores
-from store_inventory import shoes,shirts,pants,accessories
+from store_inventory import shoes,shirts,pants,accessories,inventory
+from customer_info import first_names,last_names
+
+
 import time
 import random
 
@@ -10,7 +13,6 @@ class globals:
 
 dpg.create_context()
 dpg.create_viewport(title=" ",width=globals.WIDTH, height=globals.HEIGHT,decorated=True,resizable=False)
-
 
 
 class Window_manager: 
@@ -31,7 +33,7 @@ class Window_manager:
             def category_info(sender,app_data,user_data):
                 print(f"{sender,app_data}")
             
-            def clear_orders():
+            def clear_items():
                 for item in Windows.Main_Window.selectables:
                     dpg.set_value(item,False)
                 print("Cart Order Cleared")
@@ -53,15 +55,19 @@ class Windows:
             dpg.add_spacer(height=1)
             #dpg.add_spacer(height=100)
 
+           
             with dpg.child_window(width=185,height=100,border=True,tag="child_background_window") as profile_background:
-
+                pfp = dpg.load_image("lib\\assets\\profile-icon-9.png")
+                pfp_width,pfp_height,pfp_channels,pfp_data = pfp
                 
-
+                with dpg.texture_registry():
+                    dpg.add_static_texture(pfp_width,pfp_height,pfp_data,tag="pfp")
 
                 with dpg.group(horizontal=True):
-                  
+                    dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
                     dpg.add_text(f"\nHub Name\n------\nHub Rating")
                 dpg.add_text(f"Name")
+
 
         
             dpg.add_spacer(height=1) 
@@ -133,7 +139,7 @@ class Windows:
             with dpg.group(horizontal=True):
                 dpg.add_combo(items=["Shoes","Shirts","Pants","Accessories","Clearance"],tag="category_list",
                     default_value="Shoes",callback=Window_manager.store_inventory_table_manager)
-                dpg.add_button(label="Clear Order",callback=Window_manager.clear_orders)
+                dpg.add_button(label="Clear Items",callback=Window_manager.clear_items)
             dpg.add_spacer(height=3)
 
             with dpg.table(tag="shoes_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
@@ -192,42 +198,61 @@ class Windows:
                             elif category == "Price":
                                 dpg.add_text(f"${accessory[category]:.2f}")
                             else:
-                                selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
-
-    def test():
-        print("This will be the data")
+                                selectables.append(dpg.add_selectable(label=accessory[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
         
-    def new_orders():
-        for order in Windows.new_order_list:
-            dpg.delete_item(order)
-        Windows.new_order_list.clear()
-        for i in range(random.randint(1,8)):
-            with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False) as new_order:
-                with dpg.group(horizontal=True,horizontal_spacing=10):
-                    dpg.add_text(f"#{i}")
-                    dpg.add_text("Name:")
-                with dpg.group(horizontal=True):
-                    dpg.add_text("Status")
-                    dpg.add_checkbox(default_value=False) 
-                    data = random.randint(1,100)
-                    dpg.add_button(label="View Order",user_data=data,callback=Windows.test)
-                dpg.add_separator()
-            Windows.new_order_list.append(new_order)
-        print(Windows.new_order_list)
+        class New_order:
+            def __init__(self,name,store,status,items):
+                self.name = name
+                self.store = store
+                self.status = status
+                self.items = items
+                
+            def input_data(self):
+                return self.name,self.store,self.status,self.items
+
+            def show_data(sender,app_data,user_data):
+                print(user_data)
+            
+            def input_items():
+                item_list = []
+                for num in range(random.randint(0,12)): #max of items each order can have 
+                    category = random.randint(0,3)
+                    item_list.append(list((inventory[category])[random.randrange(0,len(inventory[category]))].values())[0])
+                return item_list
+
+            def create_order():
+                for order in Windows.new_order_list:
+                    dpg.delete_item(order)
+                Windows.new_order_list.clear()
+
+                for i in range(random.randint(0,8)):
+                    order_data = Windows.Main_Window.New_order(f"{first_names[random.randrange(0,len(first_names))]} {last_names[random.randrange(0,len(last_names))]}",
+                        stores[random.randrange(0,len(stores))]["Store Name"],False,Windows.Main_Window.New_order.input_items())
+                    with dpg.child_window(parent=Windows.incoming_orders,height=55,border=False) as new_order:
+                        with dpg.group(horizontal=True,horizontal_spacing=10):
+                            dpg.add_text(f"#{i+1}")
+                            dpg.add_text(f"| {order_data.name}")
+                        with dpg.group(horizontal=True):
+                            dpg.add_text("Status")
+                            dpg.add_checkbox(default_value=False) 
+                            dpg.add_button(label="View Order",user_data=(order_data.input_data()),callback=Windows.Main_Window.New_order.show_data)
+                        dpg.add_separator()
+                    Windows.new_order_list.append(new_order)
+                print(Windows.new_order_list)
 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
         dpg.create_context()
         with dpg.group(horizontal=True):
             dpg.add_text("incoming orders")
-            dpg.add_button(label="Refresh Orders",tag="refresh_orders",callback=new_orders)
+            dpg.add_button(label="Refresh Orders",tag="refresh_orders",callback=Main_Window.New_order.create_order)
             new_order_list = []
 
         with dpg.group(horizontal=True):
             with dpg.child_window(tag="incomming_orders",width=dpg.get_item_width(incoming_orders_window)//2.5) as incoming_orders:
                 pass
         
-            with dpg.child_window(tag="incoming_order_list"):
+            with dpg.child_window(tag="incoming_order_list") as incoming_order_list:
                 pass
 
     with dpg.window(label="recieve_shipment_window",tag="recieve_shipment_window", pos=(225,10),width=500,
