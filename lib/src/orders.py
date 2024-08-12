@@ -215,7 +215,7 @@ class Windows:
             
             def input_items():
                 item_list = []
-                for num in range(random.randint(0,12)): #max of items each order can have 
+                for num in range(random.randint(1,12)): #max of items each order can have 
                     category = random.randint(0,3)
                     item_list.append(list((inventory[category])[random.randrange(0,len(inventory[category]))].values())[0])
                 return item_list
