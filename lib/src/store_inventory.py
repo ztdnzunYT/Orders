@@ -495,7 +495,7 @@ pants = [
     "Brand" : "Dj2fyes",
     "Price" : 45.99},
     {
-    "Pants Name" : " Tech Fleece Joggers",
+    "Pants Name" : "Tech Fleece Joggers",
     "Description" : "Charcoal Tech Fleece Joggers",
     "Brand" : "Dj2fyes",
     "Price" : 60.49},

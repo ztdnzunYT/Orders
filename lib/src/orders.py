@@ -69,7 +69,6 @@ class Windows:
                 dpg.add_text(f"Name")
 
 
-        
             dpg.add_spacer(height=1) 
             store_info_button = dpg.add_button(label="Store Info",tag="store_info_button",callback=Window_manager.window_manager,user_data="store_info_window")
             dpg.add_spacer(height=1)
@@ -130,7 +129,6 @@ class Windows:
                 dpg.add_text(f"Most Ordered : ")
                 dpg.add_text(f"Total Orders: ",wrap=200)
         
-            
         selectables = []
 
         with dpg.window(label="store_inventory_window",tag="store_inventory_window", pos=(225,10),width=500,
@@ -156,7 +154,7 @@ class Windows:
                             elif category == "Price":
                                 dpg.add_text(f"${shoe[category]:.2f}")
                             else:
-                                selectables.append(dpg.add_selectable(label=shoe[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=shoe))
+                                selectables.append(dpg.add_selectable(label=shoe[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=shoe,filter_key=""))
 
             with dpg.table(tag="shirts_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
                 row_background=False,resizable=False,show=False) as shirts_table:
@@ -211,16 +209,31 @@ class Windows:
                 return self.name,self.store,self.status,self.items
 
             def show_data(sender,app_data,user_data):
-                print(user_data)
-            
+                order_items = dpg.get_item_children("incoming_order_list",1)
+                for item in order_items:
+                    dpg.delete_item(item)
+                
+                name = 0
+                dpg.add_button(label=f"{user_data[name]}",parent="incoming_order_list")
+                dpg.add_separator(parent="incoming_order_list")
+                items = 3
+                for item in user_data[items]:
+                    print(item)
+                    dpg.add_text(f"{item}",parent="incoming_order_list",wrap=170)
+                    dpg.add_separator(parent="incoming_order_list")
+                
             def input_items():
                 item_list = []
-                for num in range(random.randint(1,12)): #max of items each order can have 
+                for num in range(random.randint(1,6)): #max of items each order can have 
                     category = random.randint(0,3)
                     item_list.append(list((inventory[category])[random.randrange(0,len(inventory[category]))].values())[0])
                 return item_list
 
             def create_order():
+                order_items = dpg.get_item_children("incoming_order_list",1)
+                for item in order_items:
+                    dpg.delete_item(item)
+
                 for order in Windows.new_order_list:
                     dpg.delete_item(order)
                 Windows.new_order_list.clear()
