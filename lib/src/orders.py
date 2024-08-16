@@ -57,14 +57,9 @@ class Windows:
 
            
             with dpg.child_window(width=185,height=100,border=True,tag="child_background_window") as profile_background:
-                pfp = dpg.load_image("lib\\assets\\profile-icon-9.png")
-                pfp_width,pfp_height,pfp_channels,pfp_data = pfp
                 
-                with dpg.texture_registry():
-                    dpg.add_static_texture(pfp_width,pfp_height,pfp_data,tag="pfp")
-
                 with dpg.group(horizontal=True):
-                    dpg.add_image("pfp",width=60,height=63,pos=(0,2),indent=3)
+                    
                     dpg.add_text(f"\nHub Name\n------\nHub Rating")
                 dpg.add_text(f"Name")
 
@@ -212,21 +207,22 @@ class Windows:
                 order_items = dpg.get_item_children("incoming_order_list",1)
                 for item in order_items:
                     dpg.delete_item(item)
-                
                 name = 0
                 dpg.add_button(label=f"{user_data[name]}",parent="incoming_order_list")
                 dpg.add_separator(parent="incoming_order_list")
+                store_name = 1
+                dpg.set_value(Windows.Customer_window.recipt_store_name,f"Store Name: {user_data[store_name]}")
                 items = 3
                 for item in user_data[items]:
-                    print(item)
                     dpg.add_text(f"{item}",parent="incoming_order_list",wrap=170)
                     dpg.add_separator(parent="incoming_order_list")
-                
+
             def input_items():
                 item_list = []
                 for num in range(random.randint(1,6)): #max of items each order can have 
                     category = random.randint(0,3)
                     item_list.append(list((inventory[category])[random.randrange(0,len(inventory[category]))].values())[0])
+                    print(item_list)
                 return item_list
 
             def create_order():
@@ -253,6 +249,7 @@ class Windows:
                     Windows.new_order_list.append(new_order)
                 print(Windows.new_order_list)
 
+ 
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
         dpg.create_context()
@@ -281,23 +278,23 @@ class Windows:
     
     #may be able to do a login window
     
+    class Customer_window:
+        with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
+            no_move=True,no_title_bar=True,no_resize=True) as customer_window:
+            dpg.add_text("Recipt") 
+            dpg.add_separator()
+            recipt_store_name = dpg.add_text("Store Name :")
+            dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=0)
+            dpg.add_spacer(height=2)
 
-    with dpg.window(label="customer_window",tag="customer_window", pos=(740,10),width=235,height=globals.HEIGHT/3.8,no_close=True,
-        no_move=True,no_title_bar=True,no_resize=True) as customer_window:
-        dpg.add_text("Recipt")
-        dpg.add_separator()
-        dpg.add_text("Store Name :")
-        dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=0)
-        dpg.add_spacer(height=2)
-
-        with dpg.table(header_row=False,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True):
-            dpg.add_table_column(label="Item")
-            dpg.add_table_column(label="Cost") 
-            with dpg.table_row():
-                dpg.add_text("Item")
-                dpg.add_text("Cost")
-        dpg.add_text("Total :")
-    
+            with dpg.table(header_row=False,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True) as customer_table:
+                dpg.add_table_column(label="Item")
+                dpg.add_table_column(label="Cost") 
+                with dpg.table_row():
+                    dpg.add_text("Item")
+                    dpg.add_text("Cost")
+            dpg.add_text("Total :")
+        
     
     class Phone_window:
         with dpg.window(label="phone_window",tag="phone_window", pos=(740,180),width=235,height=globals.HEIGHT/3.67,no_close=True,
@@ -335,7 +332,7 @@ class Binded_themes:
     dpg.bind_item_theme(Windows.Side_menu.background_window,Theme.background_theme)
     dpg.bind_item_theme(Windows.Side_menu.side_menu_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.Main_Window.store_info_window,Theme.window_theme)
-    dpg.bind_item_theme(Windows.customer_window,Theme.window_theme)
+    dpg.bind_item_theme(Windows.Customer_window.customer_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.Phone_window.phone_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.checkout_window,Theme.window_theme)
     dpg.bind_item_theme(Windows.Side_menu.profile_background,Theme.child_window_theme)
