@@ -22,7 +22,6 @@ class Window_manager:
                     dpg.hide_item(window)
                 dpg.show_item(user_data)
         
-
             def store_inventory_table_manager(sender,app_data,user_data):
                 for window in Windows.store_inventory_tables:
                     dpg.hide_item(window)
@@ -32,22 +31,29 @@ class Window_manager:
             
             def add_recipt_item(sender,app_data,user_data):
                 print(f"{sender,app_data}")
-                name = "Shoe Name"
+                print(dpg.get_item_label(Windows.Main_Window.category_list))
+                print("------")
+                category = "Shoe Name"
                 cost = "Price"
                 user_data = dpg.get_item_user_data(sender)
-                print(user_data[name])
+                print(user_data[category])
                 if app_data == True:
-
                     with dpg.table_row(parent="customer_table",height=20):
-                        dpg.add_text(user_data[name],wrap=70)
+                        dpg.add_text(user_data[category],wrap=70)
                         dpg.add_text(f"${user_data[cost]:.2f}")
+                Windows.Customer_window.items_added_value +=1
+                dpg.set_value(Windows.Customer_window.items_added,Windows.Customer_window.items_added_value)
                     
-        
             def clear_items():
                 for item in Windows.Main_Window.selectables:
                     dpg.set_value(item,False)  
                 print("Cart Order Cleared")
-
+                for row in dpg.get_item_children(Windows.Customer_window.customer_table,slot=1):
+                    dpg.delete_item(row)
+                Windows.Customer_window.items_added_value = 0
+                dpg.set_value(Windows.Customer_window.items_added,0)
+                
+                
 
 class Windows: 
     
@@ -140,7 +146,7 @@ class Windows:
             height=globals.HEIGHT/1.8,no_close=True,no_move=True,
             no_title_bar=True,no_resize=True, show=False) as store_inventory_window:
             with dpg.group(horizontal=True):
-                dpg.add_combo(items=["Shoes","Shirts","Pants","Accessories","Clearance"],tag="category_list",
+                category_list = dpg.add_combo(items=["Shoes","Shirts","Pants","Accessories","Clearance"],
                     default_value="Shoes",callback=Window_manager.store_inventory_table_manager)
                 dpg.add_button(label="Clear Items",callback=Window_manager.clear_items)
             dpg.add_spacer(height=3)
@@ -294,15 +300,14 @@ class Windows:
             dpg.add_text("Recipt") 
             dpg.add_separator()
             recipt_store_name = dpg.add_text("Store Name :")
-            dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=0)
+            items_added_value = 0
+            items_added = dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=items_added_value)
             dpg.add_spacer(height=2)
 
-            with dpg.table(header_row=False,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,tag="customer_table") as customer_table:
+            with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,tag="customer_table") as customer_table:
                 dpg.add_table_column(label="Item")
                 dpg.add_table_column(label="Cost") 
-                with dpg.table_row(tag="recipt_row") as recipt_row:
-                    dpg.add_text("Item")
-                    dpg.add_text("Cost")
+                recipt_row = dpg.table_row() 
             dpg.add_text("Total :")
         
     
