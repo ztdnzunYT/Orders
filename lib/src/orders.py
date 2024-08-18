@@ -30,12 +30,22 @@ class Window_manager:
                 print(app_data)
                 dpg.show_item(app_data.lower()+"_table")
             
-            def category_info(sender,app_data,user_data):
+            def add_recipt_item(sender,app_data,user_data):
                 print(f"{sender,app_data}")
-            
+                name = "Shoe Name"
+                cost = "Price"
+                user_data = dpg.get_item_user_data(sender)
+                print(user_data[name])
+                if app_data == True:
+
+                    with dpg.table_row(parent="customer_table",height=20):
+                        dpg.add_text(user_data[name],wrap=70)
+                        dpg.add_text(f"${user_data[cost]:.2f}")
+                    
+        
             def clear_items():
                 for item in Windows.Main_Window.selectables:
-                    dpg.set_value(item,False)
+                    dpg.set_value(item,False)  
                 print("Cart Order Cleared")
 
 
@@ -149,7 +159,7 @@ class Windows:
                             elif category == "Price":
                                 dpg.add_text(f"${shoe[category]:.2f}")
                             else:
-                                selectables.append(dpg.add_selectable(label=shoe[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=shoe,filter_key=""))
+                                selectables.append(dpg.add_selectable(label=shoe[category],callback=Window_manager.add_recipt_item,span_columns=True,height=45,user_data=shoe,filter_key=""))
 
             with dpg.table(tag="shirts_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
                 row_background=False,resizable=False,show=False) as shirts_table:
@@ -163,7 +173,7 @@ class Windows:
                             elif category == "Price":
                                 dpg.add_text(f"${shirt[category]:.2f}")
                             else:
-                                selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=shirt))
+                                selectables.append(dpg.add_selectable(label=shirt[category],callback=Window_manager.add_recipt_item,span_columns=True,height=45,user_data=shirt))
             
             with dpg.table(tag="pants_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
                 row_background=False,resizable=False,show=False) as pants_table:
@@ -177,7 +187,7 @@ class Windows:
                             elif category == "Price":
                                 dpg.add_text(f"${pant[category]:.2f}")
                             else:
-                                selectables.append(dpg.add_selectable(label=pant[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=pant))
+                                selectables.append(dpg.add_selectable(label=pant[category],callback=Window_manager.add_recipt_item,span_columns=True,height=45,user_data=pant))
 
             with dpg.table(tag="accessories_table",header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,
                 row_background=False,resizable=False,show=False) as accessories_table:
@@ -191,7 +201,7 @@ class Windows:
                             elif category == "Price":
                                 dpg.add_text(f"${accessory[category]:.2f}")
                             else:
-                                selectables.append(dpg.add_selectable(label=accessory[category],callback=Window_manager.category_info,span_columns=True,height=45,user_data=accessory))
+                                selectables.append(dpg.add_selectable(label=accessory[category],callback=Window_manager.add_recipt_item,span_columns=True,height=45,user_data=accessory))
         
         class New_order:
             def __init__(self,name,store,status,items):
@@ -287,10 +297,10 @@ class Windows:
             dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=0)
             dpg.add_spacer(height=2)
 
-            with dpg.table(header_row=False,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True) as customer_table:
+            with dpg.table(header_row=False,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,tag="customer_table") as customer_table:
                 dpg.add_table_column(label="Item")
                 dpg.add_table_column(label="Cost") 
-                with dpg.table_row():
+                with dpg.table_row(tag="recipt_row") as recipt_row:
                     dpg.add_text("Item")
                     dpg.add_text("Cost")
             dpg.add_text("Total :")
