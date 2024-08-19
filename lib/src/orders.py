@@ -31,9 +31,7 @@ class Window_manager:
             
             def add_recipt_item(sender,app_data,user_data):
                 print(f"{sender,app_data}")
-                print(dpg.get_item_label(Windows.Main_Window.category_list))
-                print("------")
-                category = "Shoe Name"
+                category = list(user_data)[0]
                 cost = "Price"
                 user_data = dpg.get_item_user_data(sender)
                 print(user_data[category])
@@ -241,6 +239,7 @@ class Windows:
                     print(item_list)
                 return item_list
 
+            
             def create_order():
                 order_items = dpg.get_item_children("incoming_order_list",1)
                 for item in order_items:
@@ -264,7 +263,7 @@ class Windows:
                         dpg.add_separator()
                     Windows.new_order_list.append(new_order)
                 print(Windows.new_order_list)
-
+          
  
     with dpg.window(label="incoming_orders_window",tag="incoming_orders_window", pos=(225,10),width=500,
         height=globals.HEIGHT/1.8,no_close=True,no_move=True,no_title_bar=True,no_resize=True, show=False) as incoming_orders_window:
@@ -301,7 +300,7 @@ class Windows:
             dpg.add_separator()
             recipt_store_name = dpg.add_text("Store Name :")
             items_added_value = 0
-            items_added = dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=items_added_value)
+            items_added = dpg.add_input_text(label="Items Added",width=22,readonly=True,default_value=items_added_value,use_internal_label=True)
             dpg.add_spacer(height=2)
 
             with dpg.table(header_row=True,borders_innerH=True,borders_innerV=True,borders_outerH=True,borders_outerV=True,tag="customer_table") as customer_table:
